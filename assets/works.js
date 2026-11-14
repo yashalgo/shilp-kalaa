@@ -4,6 +4,7 @@
    hires  = optional larger file; it loads only when a visitor zooms in
    looks  = optional guided close looks: x and y are 0–1 across the sheet, s is the zoom */
 window.SK = {
+  site: 'https://shilpkalaa.com/',   // public address; tools/build.js writes it into every page
   email: '',            // address that receives commission enquiries; the form stays unconnected until this is filled in
   lettering: 'serif',   // serif | type | sharp | pen | cursive
   series: [

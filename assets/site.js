@@ -1,7 +1,9 @@
 /* Shilp Kalaa · one script for every page. Each part runs only if its markup is on the page. */
 (function () {
   var SK = window.SK || { series: [], works: [] };
-  var MEDIUM = 'Ink on paper, 0.03 mm pen';
+  var MEDIUM = 'Ink on paper';
+  var BY = 'pen and ink drawing by Shubhangi Saxena';
+  var page = function (w) { return 'drawings/' + w.id + '.html'; };   /* written by tools/build.js */
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return [].slice.call((r || document).querySelectorAll(s)); };
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
@@ -32,7 +34,7 @@
   /* ---------- plate grids (home and work) ---------- */
   function plate(w) {
     var n = SK.works.indexOf(w) + 1;
-    return '<figure class="rv"><a href="piece.html?id=' + w.id + '"><div class="frame"><img class="ink" src="images/' + w.img + '" alt="' + esc(w.title) + ', ink drawing" loading="lazy"></div>' +
+    return '<figure class="rv"><a href="' + page(w) + '"><div class="frame"><img class="ink" src="images/' + w.img + '" alt="' + esc(w.title) + ', ' + BY + '" loading="lazy"></div>' +
       '<figcaption><b class="t">' + esc(w.title) + '</b><span class="lab">Pl. ' + pad(n) + ' · ' + w.year + '</span></figcaption></a></figure>';
   }
   $$('[data-plates]').forEach(function (box) {
@@ -58,24 +60,24 @@
   /* ---------- a single artwork ---------- */
   var pieceBox = $('[data-piece]');
   if (pieceBox) {
-    var id = new URLSearchParams(location.search).get('id');
+    var id = pieceBox.dataset.piece || new URLSearchParams(location.search).get('id');
     var i = Math.max(0, SK.works.findIndex(function (w) { return w.id === id; }));
     var w = SK.works[i], n = SK.works.length;
     var prev = SK.works[(i + n - 1) % n], next = SK.works[(i + 1) % n];
     var s = SK.series.find(function (x) { return x.id === w.series; }) || { title: '' };
     var roman = ['i', 'ii', 'iii', 'iv', 'v', 'vi'];
     var looks = (w.looks || []).map(function (k, j) { return '<button data-look="' + j + '"><span class="lab">' + roman[j] + '</span>' + esc(k.name) + '</button>'; }).join('');
-    document.title = w.title + ' · Shilp Kalaa';
+    document.title = w.title + ' · Ink drawing by Shubhangi Saxena | Shilp Kalaa';
     pieceBox.innerHTML =
       '<div class="a-view"><div class="zoom" tabindex="0" aria-label="' + esc(w.title) + '. Double-click or pinch to zoom, drag to move." data-mm="' + w.mm + '"' + (w.hires ? ' data-hires="images/' + w.hires + '"' : '') + " data-looks='" + JSON.stringify(w.looks || []) + "'>" +
-      '<img class="ink" src="images/' + w.img + '" alt="' + esc(w.title) + ', ink drawing"></div>' +
+      '<img class="ink" src="images/' + w.img + '" alt="' + esc(w.title) + ', ' + BY + '"></div>' +
       '<div class="scalebar lab"><i></i><span>1 cm</span></div><p class="hint lab">Come closer · double-click or pinch</p>' +
       '<div class="ctrl"><button data-zoom="out" aria-label="Zoom out">−</button><button data-zoom="in" aria-label="Zoom in">+</button></div></div>' +
       '<aside class="a-data"><div><p class="lab">Pl. ' + pad(i + 1) + '</p><h1 class="t">' + esc(w.title) + '</h1></div>' +
       '<dl><dt class="lab">Series</dt><dd><a href="work.html#' + w.series + '">' + esc(s.title) + '</a></dd><dt class="lab">Year</dt><dd>' + w.year + '</dd><dt class="lab">Medium</dt><dd>' + esc(w.medium || MEDIUM) + '</dd><dt class="lab">Size</dt><dd>' + esc(w.size) + '</dd></dl>' +
       '<div><p class="lab">' + (looks ? 'Close looks' : 'View') + '</p><div class="a-looks">' + looks + '<button data-zoom="reset"><span class="lab">←</span>Step back</button></div></div>' +
       '<div class="a-end"><a class="line" href="commissions.html?about=' + encodeURIComponent(w.title) + '">Ask about this drawing</a>' +
-      '<nav class="a-nav lab" aria-label="More drawings"><a href="piece.html?id=' + prev.id + '">← Previous</a><a href="piece.html?id=' + next.id + '">Next →</a></nav></div></aside>';
+      '<nav class="a-nav lab" aria-label="More drawings"><a href="' + page(prev) + '">← Previous</a><a href="' + page(next) + '">Next →</a></nav></div></aside>';
   }
 
   /* ---------- zoom viewer ---------- */

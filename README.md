@@ -1,6 +1,8 @@
 # Shilp Kalaa · website
 
-A plain HTML, CSS and JavaScript site for Shubhangi Saxena's drawings. There is no build step: open `index.html` in a browser, or upload the folder to any static host.
+A plain HTML, CSS and JavaScript site for Shubhangi Saxena's drawings. Open `index.html` in a browser, or upload the folder to any static host.
+
+**After changing `assets/works.js`, run `node tools/build.js`.** It needs no packages. It rewrites the parts that search engines and AI assistants read: each page's title and description, one page per drawing in `drawings/`, `sitemap.xml`, `robots.txt` and `llms.txt`.
 
 ## Files
 
@@ -8,7 +10,10 @@ A plain HTML, CSS and JavaScript site for Shubhangi Saxena's drawings. There is 
 |---|---|
 | `index.html` | Home |
 | `work.html` | All series, plus the "Seen on walks" photographs |
-| `piece.html` | One drawing with zoom, close looks and the scale bar (`piece.html?id=...`) |
+| `drawings/*.html` | One page per drawing, written by the build. Do not edit by hand |
+| `piece.html` | The template those pages are made from |
+| `tools/build.js` | The build. Page titles, descriptions, the "In brief" facts and the questions on About are edited here |
+| `sitemap.xml`, `robots.txt`, `llms.txt` | Written by the build, for search engines and AI assistants |
 | `projects.html` | Projects, exhibitions and workshops |
 | `about.html` | About and list of projects |
 | `commissions.html` | Enquiry form |
@@ -19,7 +24,7 @@ A plain HTML, CSS and JavaScript site for Shubhangi Saxena's drawings. There is 
 
 ## Common changes
 
-**Add a drawing.** Put the image in `images/` and add one entry to `works` in `assets/works.js`. It appears on the Work page and gets its own page.
+**Add a drawing.** Put the image in `images/` and add one entry to `works` in `assets/works.js`. Then run `node tools/build.js` so it gets its own page.
 
 **Replace an Instagram image with a high-resolution file.** Either overwrite the file in `images/`, or keep the small one and add `hires: 'name-large.jpg'` to the entry; the large file then loads only when a visitor zooms in.
 
@@ -35,6 +40,16 @@ A plain HTML, CSS and JavaScript site for Shubhangi Saxena's drawings. There is 
 
 Titles, series names, years, sizes and all page text are drafts until Shubhangi supplies the real ones. The images are Instagram exports and go soft when zoomed.
 
-## Putting it online
+## Online
 
-Upload the whole folder, except `.superpowers/`, to a free static host such as Netlify, Cloudflare Pages or GitHub Pages. No settings are needed.
+The site is published with GitHub Pages from the `main` branch of `yashalgo/shilp-kalaa`; pushing to `main` updates it. Its public address is set once, as `site` in `assets/works.js` (currently `https://shilpkalaa.com/`). If the address ever changes, change it there and run the build.
+
+## Being found
+
+Done in the site: page titles and descriptions, canonical addresses, sharing cards, structured data (artist, artworks, exhibition, questions), a sitemap with images, and open access for search and AI crawlers.
+
+Still to do by hand, once the domain is live:
+
+1. Google Search Console: add `https://shilpkalaa.com/`, verify, and submit `sitemap.xml`.
+2. Bing Webmaster Tools: the same. Bing's index feeds ChatGPT search and Copilot.
+3. Put `shilpkalaa.com` in the Instagram bio and on LinkedIn. Links from her own profiles are how search engines connect the site to her.
