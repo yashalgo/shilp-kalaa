@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Commissions · Shilp Kalaa</title>
+<meta name="description" content="Is there a small place you keep going back to? Ask Shubhangi Saxena for a drawing, or write about an exhibition, a collaboration or a workshop.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="icon" href="data:,">
+</head>
+<body>
+<header class="head">
+  <a class="wm" href="index.html">Shilp Kalaa<span class="lab">Shubhangi Saxena</span></a>
+  <nav class="lab" aria-label="Main"><a href="work.html">Work</a><a href="projects.html">Projects</a><a href="about.html">About</a><a href="commissions.html" aria-current="page">Commissions</a></nav>
+</header>
+
+<main class="page">
+  <div class="comm">
+    <div>
+      <p class="lab" style="margin-bottom:18px">Commissions and enquiries</p>
+      <h1 class="lede rv" style="margin-bottom:44px">Is there a small place <em>you keep going back to?</em></h1>
+      <div class="body rv">
+        <p>A wall you pass every morning. The step outside a house you grew up in. A corner of a garden that someone you love once tended.</p>
+        <p>Shubhangi takes on a few commissions each year. Each one begins with looking, in person where she can and through your photographs where she cannot. Curators, galleries and collaborators are just as welcome to write.</p>
+      </div>
+      <ol class="steps rv">
+        <li><span class="lab">01</span><span>Tell her about the place, in as many or as few words as you like.</span></li>
+        <li><span class="lab">02</span><span>She writes back with questions, a size, and an honest sense of how long it will take.</span></li>
+        <li><span class="lab">03</span><span>Then she draws, slowly. You will hear from her when it is ready to travel.</span></li>
+      </ol>
+    </div>
+
+    <form class="form rv" id="enquiry">
+      <label><span class="lab">Your name</span><input name="name" type="text" autocomplete="name" required></label>
+      <label><span class="lab">Email</span><input name="email" type="email" autocomplete="email" required></label>
+      <label class="full"><span class="lab">This is about</span>
+        <select name="kind">
+          <option>A commissioned drawing</option>
+          <option>An exhibition or gallery enquiry</option>
+          <option>A collaboration</option>
+          <option>A workshop</option>
+          <option>Something else</option>
+        </select>
+      </label>
+      <label class="full"><span class="lab">Tell her about it</span><textarea name="message" required></textarea></label>
+      <label class="hp" aria-hidden="true">Leave this empty<input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+      <div class="full send"><button class="btn lab" type="submit" style="color:var(--ink)">Send</button><p class="form-note" role="status" aria-live="polite"></p></div>
+    </form>
+  </div>
+</main>
+
+<footer class="foot lab">
+  <span>Shilp Kalaa · Shubhangi Saxena · Watch your step</span>
+  <nav aria-label="Elsewhere"><a href="https://www.instagram.com/shilp_kalaa/" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/shubhangi-saxena-ud/" rel="noopener">LinkedIn</a><a href="commissions.html">Commissions</a></nav>
+</footer>
+<script src="assets/works.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>
