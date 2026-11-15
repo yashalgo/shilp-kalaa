@@ -417,6 +417,11 @@ html:not(.js) .zh-cap{grid-area:cap}
 @media (pointer:coarse),(max-width:640px){
   .head .wm{display:inline-flex;flex-direction:column;justify-content:center;min-height:44px}
   .foot-base nav a{display:inline-flex;align-items:center;min-height:44px;padding:0;margin:0}
-  a.line,.links a{position:relative}
-  a.line::after,.links a::after{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:44px;transform:translateY(-50%)}
+  .a-data dd a,.cv dd a,.facts dd a{padding-block:11px}
+  .menu-open .head nav .menu-foot a{display:inline-flex;align-items:center;min-height:44px;padding:0}
+}
+/* 44px touch targets on phones for underlined links: padding above the text, cancelled by a negative margin */
+@media (max-width:640px){
+  a.line,.links a{display:inline-block;padding-top:18px;margin-top:-18px}
+  .foot-write .line{padding-top:18px;margin-top:-8px}
 }

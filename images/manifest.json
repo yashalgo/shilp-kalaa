@@ -434,32 +434,6 @@
         }
       ]
     },
-    "crack-detail.jpg": {
-      "width": 1440,
-      "height": 1440,
-      "variants": [
-        {
-          "width": 480,
-          "jpeg": "images/generated/crack-detail-480.jpg",
-          "webp": "images/generated/crack-detail-480.webp"
-        },
-        {
-          "width": 768,
-          "jpeg": "images/generated/crack-detail-768.jpg",
-          "webp": "images/generated/crack-detail-768.webp"
-        },
-        {
-          "width": 1200,
-          "jpeg": "images/generated/crack-detail-1200.jpg",
-          "webp": "images/generated/crack-detail-1200.webp"
-        },
-        {
-          "width": 1440,
-          "jpeg": "images/generated/crack-detail-1440.jpg",
-          "webp": "images/generated/crack-detail-1440.webp"
-        }
-      ]
-    },
     "crack.jpg": {
       "width": 1440,
       "height": 1440,
@@ -504,32 +478,6 @@
           "width": 1092,
           "jpeg": "images/generated/disc-1092.jpg",
           "webp": "images/generated/disc-1092.webp"
-        }
-      ]
-    },
-    "forest-detail.jpg": {
-      "width": 1440,
-      "height": 1440,
-      "variants": [
-        {
-          "width": 480,
-          "jpeg": "images/generated/forest-detail-480.jpg",
-          "webp": "images/generated/forest-detail-480.webp"
-        },
-        {
-          "width": 768,
-          "jpeg": "images/generated/forest-detail-768.jpg",
-          "webp": "images/generated/forest-detail-768.webp"
-        },
-        {
-          "width": 1200,
-          "jpeg": "images/generated/forest-detail-1200.jpg",
-          "webp": "images/generated/forest-detail-1200.webp"
-        },
-        {
-          "width": 1440,
-          "jpeg": "images/generated/forest-detail-1440.jpg",
-          "webp": "images/generated/forest-detail-1440.webp"
         }
       ]
     },
@@ -1238,27 +1186,6 @@
         }
       ]
     },
-    "moss-radial-detail.jpg": {
-      "width": 1028,
-      "height": 1028,
-      "variants": [
-        {
-          "width": 480,
-          "jpeg": "images/generated/moss-radial-detail-480.jpg",
-          "webp": "images/generated/moss-radial-detail-480.webp"
-        },
-        {
-          "width": 768,
-          "jpeg": "images/generated/moss-radial-detail-768.jpg",
-          "webp": "images/generated/moss-radial-detail-768.webp"
-        },
-        {
-          "width": 1028,
-          "jpeg": "images/generated/moss-radial-detail-1028.jpg",
-          "webp": "images/generated/moss-radial-detail-1028.webp"
-        }
-      ]
-    },
     "moss-radial.jpg": {
       "width": 1440,
       "height": 1440,
@@ -1343,32 +1270,6 @@
         }
       ]
     },
-    "p-book-grass.jpg": {
-      "width": 1439,
-      "height": 1799,
-      "variants": [
-        {
-          "width": 480,
-          "jpeg": "images/generated/p-book-grass-480.jpg",
-          "webp": "images/generated/p-book-grass-480.webp"
-        },
-        {
-          "width": 768,
-          "jpeg": "images/generated/p-book-grass-768.jpg",
-          "webp": "images/generated/p-book-grass-768.webp"
-        },
-        {
-          "width": 1200,
-          "jpeg": "images/generated/p-book-grass-1200.jpg",
-          "webp": "images/generated/p-book-grass-1200.webp"
-        },
-        {
-          "width": 1439,
-          "jpeg": "images/generated/p-book-grass-1439.jpg",
-          "webp": "images/generated/p-book-grass-1439.webp"
-        }
-      ]
-    },
     "p-box.jpg": {
       "width": 1440,
       "height": 1789,
@@ -1392,32 +1293,6 @@
           "width": 1440,
           "jpeg": "images/generated/p-box-1440.jpg",
           "webp": "images/generated/p-box-1440.webp"
-        }
-      ]
-    },
-    "p-bricks-card.jpg": {
-      "width": 1440,
-      "height": 1800,
-      "variants": [
-        {
-          "width": 480,
-          "jpeg": "images/generated/p-bricks-card-480.jpg",
-          "webp": "images/generated/p-bricks-card-480.webp"
-        },
-        {
-          "width": 768,
-          "jpeg": "images/generated/p-bricks-card-768.jpg",
-          "webp": "images/generated/p-bricks-card-768.webp"
-        },
-        {
-          "width": 1200,
-          "jpeg": "images/generated/p-bricks-card-1200.jpg",
-          "webp": "images/generated/p-bricks-card-1200.webp"
-        },
-        {
-          "width": 1440,
-          "jpeg": "images/generated/p-bricks-card-1440.jpg",
-          "webp": "images/generated/p-bricks-card-1440.webp"
         }
       ]
     },
@@ -1489,32 +1364,6 @@
         }
       ]
     },
-    "p-floor-2.jpg": {
-      "width": 1440,
-      "height": 1440,
-      "variants": [
-        {
-          "width": 480,
-          "jpeg": "images/generated/p-floor-2-480.jpg",
-          "webp": "images/generated/p-floor-2-480.webp"
-        },
-        {
-          "width": 768,
-          "jpeg": "images/generated/p-floor-2-768.jpg",
-          "webp": "images/generated/p-floor-2-768.webp"
-        },
-        {
-          "width": 1200,
-          "jpeg": "images/generated/p-floor-2-1200.jpg",
-          "webp": "images/generated/p-floor-2-1200.webp"
-        },
-        {
-          "width": 1440,
-          "jpeg": "images/generated/p-floor-2-1440.jpg",
-          "webp": "images/generated/p-floor-2-1440.webp"
-        }
-      ]
-    },
     "p-floor-3.jpg": {
       "width": 1440,
       "height": 1440,
@@ -1538,84 +1387,6 @@
           "width": 1440,
           "jpeg": "images/generated/p-floor-3-1440.jpg",
           "webp": "images/generated/p-floor-3-1440.webp"
-        }
-      ]
-    },
-    "p-kaal-1.jpg": {
-      "width": 1440,
-      "height": 1918,
-      "variants": [
-        {
-          "width": 480,
-          "jpeg": "images/generated/p-kaal-1-480.jpg",
-          "webp": "images/generated/p-kaal-1-480.webp"
-        },
-        {
-          "width": 768,
-          "jpeg": "images/generated/p-kaal-1-768.jpg",
-          "webp": "images/generated/p-kaal-1-768.webp"
-        },
-        {
-          "width": 1200,
-          "jpeg": "images/generated/p-kaal-1-1200.jpg",
-          "webp": "images/generated/p-kaal-1-1200.webp"
-        },
-        {
-          "width": 1440,
-          "jpeg": "images/generated/p-kaal-1-1440.jpg",
-          "webp": "images/generated/p-kaal-1-1440.webp"
-        }
-      ]
-    },
-    "p-paper-1.jpg": {
-      "width": 1440,
-      "height": 1440,
-      "variants": [
-        {
-          "width": 480,
-          "jpeg": "images/generated/p-paper-1-480.jpg",
-          "webp": "images/generated/p-paper-1-480.webp"
-        },
-        {
-          "width": 768,
-          "jpeg": "images/generated/p-paper-1-768.jpg",
-          "webp": "images/generated/p-paper-1-768.webp"
-        },
-        {
-          "width": 1200,
-          "jpeg": "images/generated/p-paper-1-1200.jpg",
-          "webp": "images/generated/p-paper-1-1200.webp"
-        },
-        {
-          "width": 1440,
-          "jpeg": "images/generated/p-paper-1-1440.jpg",
-          "webp": "images/generated/p-paper-1-1440.webp"
-        }
-      ]
-    },
-    "p-paper-2.jpg": {
-      "width": 1440,
-      "height": 1440,
-      "variants": [
-        {
-          "width": 480,
-          "jpeg": "images/generated/p-paper-2-480.jpg",
-          "webp": "images/generated/p-paper-2-480.webp"
-        },
-        {
-          "width": 768,
-          "jpeg": "images/generated/p-paper-2-768.jpg",
-          "webp": "images/generated/p-paper-2-768.webp"
-        },
-        {
-          "width": 1200,
-          "jpeg": "images/generated/p-paper-2-1200.jpg",
-          "webp": "images/generated/p-paper-2-1200.webp"
-        },
-        {
-          "width": 1440,
-          "jpeg": "images/generated/p-paper-2-1440.jpg",
-          "webp": "images/generated/p-paper-2-1440.webp"
         }
       ]
     },
@@ -2260,32 +2031,6 @@
         }
       ]
     },
-    "seen-bark.jpg": {
-      "width": 1440,
-      "height": 1439,
-      "variants": [
-        {
-          "width": 480,
-          "jpeg": "images/generated/seen-bark-480.jpg",
-          "webp": "images/generated/seen-bark-480.webp"
-        },
-        {
-          "width": 768,
-          "jpeg": "images/generated/seen-bark-768.jpg",
-          "webp": "images/generated/seen-bark-768.webp"
-        },
-        {
-          "width": 1200,
-          "jpeg": "images/generated/seen-bark-1200.jpg",
-          "webp": "images/generated/seen-bark-1200.webp"
-        },
-        {
-          "width": 1440,
-          "jpeg": "images/generated/seen-bark-1440.jpg",
-          "webp": "images/generated/seen-bark-1440.webp"
-        }
-      ]
-    },
     "seen-brick-moss.jpg": {
       "width": 1066,
       "height": 1066,
@@ -2330,32 +2075,6 @@
           "width": 1440,
           "jpeg": "images/generated/seen-moss-clean-1440.jpg",
           "webp": "images/generated/seen-moss-clean-1440.webp"
-        }
-      ]
-    },
-    "seen-moss.jpg": {
-      "width": 1440,
-      "height": 1440,
-      "variants": [
-        {
-          "width": 480,
-          "jpeg": "images/generated/seen-moss-480.jpg",
-          "webp": "images/generated/seen-moss-480.webp"
-        },
-        {
-          "width": 768,
-          "jpeg": "images/generated/seen-moss-768.jpg",
-          "webp": "images/generated/seen-moss-768.webp"
-        },
-        {
-          "width": 1200,
-          "jpeg": "images/generated/seen-moss-1200.jpg",
-          "webp": "images/generated/seen-moss-1200.webp"
-        },
-        {
-          "width": 1440,
-          "jpeg": "images/generated/seen-moss-1440.jpg",
-          "webp": "images/generated/seen-moss-1440.webp"
         }
       ]
     },

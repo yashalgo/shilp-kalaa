@@ -107,6 +107,7 @@ html:not(.head-away) .p-nav{top:var(--head-h,0px)}
 .p-nav ol::-webkit-scrollbar{display:none}
 .p-nav a{display:flex;align-items:center;gap:8px;min-height:46px;white-space:nowrap;font:300 12.5px/1 var(--f-label);letter-spacing:.04em;text-transform:uppercase;color:var(--soft);border-bottom:1px solid transparent;transition:color .25s,border-color .25s}
 .p-nav-n{text-transform:none;color:var(--moss)}
+.p-nav a{min-width:44px}
 .p-nav a:hover,.p-nav a[aria-current]{color:var(--ink)}
 
 .p-step{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);padding:20vh var(--pad) 4vh;scroll-margin-top:60px}
@@ -555,4 +556,9 @@ html:not(.head-away) .p-nav{top:var(--head-h,0px)}
 }
 @media (prefers-reduced-motion:reduce){
   .p-nav,.closer-stage img,.closer.is-live .closer-step p{transition:none}
+}
+/* 44px touch targets on phones: more padding above the link text, cancelled by a negative margin, so nothing moves */
+@media (max-width:640px){
+  .story .links a{padding-top:18px;margin-top:-8px}
+  .story .line{padding-top:20px;margin-top:-8px}
 }

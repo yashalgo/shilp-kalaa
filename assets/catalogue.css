@@ -299,6 +299,6 @@
 
 /* touch targets of at least 44px for links set in running text or short lines (the visible style is unchanged) */
 @media (pointer:coarse),(max-width:640px){
-  a.line,.links a,.field figcaption a,.a-nav a,.pl-cap a{position:relative}
-  a.line::after,.links a::after,.field figcaption a::after{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:44px;transform:translateY(-50%)}
+  .field figcaption a{padding-block:11px}
 }
+@media (max-width:640px){ .pj-more .line{padding-top:18px;margin-top:-8px} }

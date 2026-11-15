@@ -60,7 +60,7 @@ const LINKEDIN = 'https://www.linkedin.com/in/shubhangi-saxena-ud/';
 const MEDIUM = 'Pen and ink on paper';                    /* default; a work's own `medium` wins */
 const BY = 'pen and ink drawing by ' + ARTIST;            /* ends every drawing's alt text */
 const DEFAULT_IMAGE = 'og.jpg';                             /* sharing image, in images/ */
-const DEFAULT_IMAGE_ALT = 'A pen and ink drawing of moss by ' + ARTIST;
+const DEFAULT_IMAGE_ALT = 'Shilp Kalaa, Shubhangi Saxena, drawings in ink, beside her pen and ink drawing of a creeping plant from a pavement crack.';
 
 const SUMMARY = 'Shubhangi Saxena is a nature artist and fine artist from India who works in India and London under the name Shilp Kalaa. She makes fine pen and ink drawings of moss, small wild plants and forest floors from close observation, and in 2025 showed Whispers on Bricks at KaalChakra, part of London Design Festival.';
 
@@ -181,7 +181,7 @@ const PAGES = {
     desc: 'Ask about a pen and ink drawing of a place you know, or propose an exhibition or collaboration with Shubhangi Saxena, nature artist from India.',
     ld: 'contact', ...CATALOGUE
   },
-  '404.html': { title: 'Nothing growing here · Shilp Kalaa', desc: 'This page could not be found.', noindex: true, ...CATALOGUE }
+  '404.html': { title: 'Nothing growing here · Shilp Kalaa', desc: 'This page could not be found.', noindex: true, rootAbsolute: true, ...CATALOGUE }
 };
 const PIECE = { title: 'Drawing · Shilp Kalaa', desc: 'A pen and ink drawing by Shubhangi Saxena.', noindex: true };
 
@@ -595,6 +595,16 @@ function sizeImages(html) {
   });
 }
 
+/* The 404 page is served at whatever missing address was asked for (/nope/xyz), so its links and files
+   must not be relative. A <base href="/"> would fix those, but it also sends the skip link's #main to the
+   home page. So the page has no <base>, and every page-relative URL is made root-absolute instead. */
+function rootAbsolute(html) {
+  html = html.replace(/<base href="\/">\n?/, '');
+  const fix = url => /^(?:[a-z][a-z0-9+.-]*:|\/|#|\?)/i.test(url) || url === '' ? url : '/' + url;
+  html = html.replace(/\b(href|src|poster)="([^"]*)"/g, (m, attr, url) => attr + '="' + fix(url) + '"');
+  return html.replace(/\bsrcset="([^"]*)"/g, (m, set) => 'srcset="' + set.split(/,\s*/).map(part => { const [u, ...rest] = part.split(' '); return [fix(u), ...rest].join(' '); }).join(', ') + '"');
+}
+
 function fillGrids(html) {
   html = html.replace(/(<section class="catalogue" data-catalogue[^>]*>)[\s\S]*?(<\/section>\s*<!-- \/catalogue -->)/, (all, openTag, closeTag) => openTag + catalogue() + closeTag);
   return html.replace(/(<section class="plates" data-(plates|pick)="[^"]*"[^>]*>)[\s\S]*?(<\/section>)/g, (all, openTag, kind, closeTag) => {
@@ -756,6 +766,7 @@ function render() {
     html = applyShell(html, file, p, headRegion(file, p, { ld: p.ld ? LD[p.ld](file, p) : null, image: p.image }));
     html = fillGrids(html);
     if (p.sizeImages) html = sizeImages(html);
+    if (p.rootAbsolute) html = rootAbsolute(html);
     if (file === 'about.html') html = fillAbout(html);
     if (file === 'commissions.html') html = fillContact(html);
     out.set(file, html);
