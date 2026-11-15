@@ -88,23 +88,74 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .scalebar{display:inline-flex;flex-direction:column;gap:7px}
 .scalebar i{display:block;height:6px;border:1px solid currentColor;border-top:0;transition:width .35s ease}
 
-/* ---------- home: scroll-zoom opening ---------- */
-.zh{height:360vh;--hero-start:24vh}   /* starting height of the drawing (a length, or a plain number = scale) */
+/* ---------- home: the opening ----------
+   One pinned screen. At rest: the opening words over a split view of her photograph and her drawing
+   of the same plant (drag the line). Scrolling, phase one: the line glides across until only the
+   drawing is left. Phase two: the drawing itself grows until "This is how closely she looks."
+   The drawing is one element: moss-radial.jpg, placed so that the part of it cropped as pair-drawing.jpg
+   (box 260,192–1353,1284 of 1440) sits exactly in the split square, then clipped to that square. */
+.zh{--hh:112px;--S:min(64svh,calc(100vw - 2 * var(--pad)),calc(100svh - var(--hh) - 270px));height:calc(100svh + 320vh)}   /* scroll: 60vh reveal + 260vh zoom (site.js HERO_PHASE) */
 .zh .scalebar{display:none}
 .zh[data-size-confirmed] .scalebar{display:inline-flex}
-.zh-sticky{position:sticky;top:0;height:100vh;min-height:520px;overflow:hidden;display:grid;place-items:center}
-.zh-sticky img{width:min(74vh,74vw);height:auto;transform:scale(.16);transform-origin:46% 50%;will-change:transform}
-.zh-hint{position:absolute;left:50%;bottom:8vh;translate:-50% 0;display:flex;flex-direction:column;align-items:center;gap:16px}
-.zh-hint::after{content:"";width:1px;height:46px;background:var(--soft);transform-origin:top;animation:drip 2.6s ease-in-out infinite}
+.zh-sticky{position:sticky;top:0;height:100svh;min-height:560px;overflow:hidden;display:flex;flex-direction:column;align-items:center;padding:calc(var(--hh) + clamp(8px,1.6svh,24px)) var(--pad) 0}
+.zh-open{position:relative;z-index:3;text-align:center;margin-bottom:clamp(14px,2.6svh,30px)}
+.zh-open .lab{margin-bottom:12px}
+.zh-open .lede{font-size:calc(clamp(26px,3.1vw,46px)*var(--t-scale));max-width:18em;margin:0 auto;text-wrap:balance}
+.zh-split{position:relative;width:var(--S);margin:0}   /* no z-index: the drawing must multiply with the paper behind it */
+.zh-labels{display:flex;justify-content:space-between;margin-bottom:8px}
+.zh-stage{position:relative;width:var(--S);aspect-ratio:1093/1092;--x:50%;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.js .zh-stage{cursor:ew-resize}
+.zh-photo{position:absolute;inset:0;overflow:hidden;clip-path:inset(0 calc(100% - var(--x)) 0 0)}
+.zh-photo img{width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
+.zh-paper{position:absolute;inset:0;background:var(--paper);clip-path:inset(0 0 0 var(--x))}
+.zh-ink{position:absolute;left:-23.788%;top:-17.567%;width:131.747%;max-width:none;height:auto;transform-origin:46% 50%;clip-path:inset(13.333% 6.042% 10.833% calc(18.056% + var(--x) * .75903));pointer-events:none;-webkit-user-drag:none;will-change:transform}
+.zh-line{position:absolute;z-index:2;top:0;bottom:0;left:var(--x);width:1px;margin-left:-.5px;background:var(--ink)}
+.zh-cap{margin-top:8px;font:italic 400 15.5px/1.4 var(--f-title);color:var(--soft)}
+.zh-hint{margin-top:2px}
+.hint-coarse{display:none}
+@media (pointer:coarse){.hint-coarse{display:inline}.hint-fine{display:none}}
+/* the split handle (made by site.js) */
+.zh-handle{position:absolute;top:50%;left:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;border:1px solid var(--ink);background:var(--paper);cursor:ew-resize;touch-action:none}
+.zh-handle::before,.zh-handle::after{content:"";position:absolute;top:50%;margin-top:-4px;border:4px solid transparent}
+.zh-handle::before{left:11px;border-right:5px solid var(--ink);border-left:0}
+.zh-handle::after{right:11px;border-left:5px solid var(--ink);border-right:0}
+.zh-handle:focus-visible{outline:1px solid var(--moss);outline-offset:4px}
+.zh.dragging .zh-handle{background:var(--ink)}
+.zh.dragging .zh-handle::before{border-right-color:var(--paper)}
+.zh.dragging .zh-handle::after{border-left-color:var(--paper)}
+/* "Scroll to go in": shows once the photograph has gone */
+.zh-go{position:absolute;z-index:3;left:50%;bottom:7svh;translate:-50% 0;display:flex;flex-direction:column;align-items:center;gap:14px;opacity:0;pointer-events:none}
+.zh-go::after{content:"";width:1px;height:46px;background:var(--soft);transform-origin:top;animation:drip 2.6s ease-in-out infinite}
 @keyframes drip{0%{transform:scaleY(0)}55%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
-.zh-sticky .scalebar{position:absolute;left:var(--pad);bottom:36px;background:var(--paper);padding:8px 10px 6px;margin:-8px -10px -6px}
-.zh-plate{position:absolute;right:var(--pad);bottom:36px;text-align:right}
-/* the opening words sit above the small drawing and fade as the visitor scrolls in */
-.zh-open{position:absolute;z-index:1;left:var(--pad);right:var(--pad);bottom:calc(50% + var(--hero-start)/2 + 3vh);text-align:center}
-.zh-open .lab{margin-bottom:16px}
-.zh-open .lede{font-size:calc(clamp(28px,3.6vw,54px)*var(--t-scale));max-width:17em;margin:0 auto}
+.zh-sticky .scalebar{position:absolute;z-index:4;left:var(--pad);bottom:36px;background:var(--paper);padding:8px 10px 6px;margin:-8px -10px -6px}
+.zh-plate{position:absolute;z-index:4;right:var(--pad);bottom:36px;text-align:right;opacity:0}
+.zh-plate a{display:block;transition:color .3s}
+@media (max-width:640px) and (prefers-reduced-motion:no-preference){.js .zh-plate{display:none}}   /* no room beside the captions on a phone */
+.zh-plate a:hover{color:var(--ink)}
 /* short lines that appear one at a time during the zoom */
-.zh-say{position:absolute;z-index:1;left:50%;bottom:30px;translate:-50% 0;max-width:calc(100vw - 2*var(--pad));padding:8px 14px;background:var(--paper);color:var(--ink);text-align:center;white-space:nowrap;opacity:0;pointer-events:none}
+.zh-say{position:absolute;z-index:4;left:50%;bottom:30px;translate:-50% 0;max-width:calc(100vw - 2*var(--pad));padding:8px 14px;background:var(--paper);color:var(--ink);text-align:center;white-space:nowrap;opacity:0;pointer-events:none;font-size:13px}
+/* the still forms. Reduced motion: no scroll animation; the split still works by drag and keys,
+   and the three captions follow as a list. No JavaScript: the photograph and the drawing side by side. */
+@media (prefers-reduced-motion:reduce){
+  .zh{height:auto}
+  .zh-sticky{position:relative;height:auto;min-height:0;padding-bottom:70px;overflow:visible}
+  .zh-say,.zh-plate{position:static;translate:none;opacity:1;white-space:normal;max-width:none;padding:0;margin-top:14px;text-align:center}
+  .zh-say:first-of-type{margin-top:34px}
+  .zh-go{display:none}
+}
+html:not(.js) .zh{height:auto}
+html:not(.js) .zh-sticky{position:relative;height:auto;min-height:0;padding-bottom:70px;overflow:visible}
+html:not(.js) .zh-say,html:not(.js) .zh-plate{position:static;translate:none;opacity:1;white-space:normal;max-width:none;padding:0;margin-top:14px;text-align:center}
+html:not(.js) .zh-say:first-of-type{margin-top:34px}
+html:not(.js) .zh-go,html:not(.js) .zh-line,html:not(.js) .zh-paper,html:not(.js) .zh-hint{display:none}
+html:not(.js) .zh-split{width:min(1100px,100%);display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"l1 l2" "ph ink" "cap cap";column-gap:24px;row-gap:8px}
+html:not(.js) .zh-labels,html:not(.js) .zh-stage{display:contents}
+html:not(.js) .zh-labels span:first-child{grid-area:l1}
+html:not(.js) .zh-labels span:last-child{grid-area:l2}
+html:not(.js) .zh-photo{position:relative;grid-area:ph;clip-path:none;aspect-ratio:1093/1092}
+html:not(.js) .zh-ink{position:static;grid-area:ink;width:100%;clip-path:none;transform:none;align-self:center}
+html:not(.js) .zh-cap{grid-area:cap}
+@media (max-width:640px){html:not(.js) .zh-split{grid-template-columns:1fr;grid-template-areas:"l1" "ph" "l2" "ink" "cap"}}
 
 .d-intro{display:grid;grid-template-columns:1.15fr 1fr;gap:10vw;align-items:end;padding:20vh var(--pad) 22vh}
 .d-intro .lab{margin-bottom:18px}
@@ -301,6 +352,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .menu-open .head nav .menu-foot a{display:inline-block;font:var(--l-weight) var(--l-size)/1.6 var(--f-label);letter-spacing:var(--l-track);text-transform:uppercase;color:var(--soft);padding:12px 0}
   .foot{grid-template-columns:1fr;row-gap:30px}
   .foot-base{flex-direction:column;margin-top:40px}
+  .zh{--hh:68px}
   .zh-say{bottom:84px;white-space:normal;width:max-content}
   .h-sec,.h-about{padding-bottom:14vh}
   .h-head{margin-bottom:48px}
@@ -319,22 +371,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .page-head{margin-bottom:70px}
   .proj{padding-bottom:80px}
   .form{grid-template-columns:1fr}
-  .zh-plate{display:none}
   .a-view{padding:76px 16px 12px}
   .notes{gap:16px}
 }
 @media (prefers-reduced-motion:reduce){
   .js .rv{opacity:1;transition:none}
   .head,.zoom.anim img,.grid .frame img,.cards img{transition:none}
-  .zh-hint::after{animation:none}
-  /* the scroll hero becomes a still page: opening words, the drawing whole, its captions */
-  .zh{height:auto}
-  .zh-sticky{position:relative;height:auto;min-height:0;display:flex;flex-direction:column;align-items:center;gap:28px;padding:150px var(--pad) 80px}
-  .zh-sticky img{transform:none;width:min(70vh,100%)}
-  .zh-open,.zh-say,.zh-plate,.zh-sticky .scalebar{position:static;translate:none;opacity:1;margin:0}
-  .zh-say{white-space:normal;width:auto;max-width:none;padding:0}
-  .zh-plate{text-align:center}
-  .zh-hint{display:none}
+  .zh-go::after{animation:none}
 }
 
 /* ---------- about: plain facts and questions ---------- */

@@ -290,48 +290,116 @@
   };
 
   /* =====================================================================
-     HOME HERO: the drawing grows as the visitor scrolls through .zh.
-     Starting size: the CSS variable --hero-start on .zh (a length such as 24vh,
-     or a plain number = scale). Captions .zh-say[data-from][data-to] show between
-     those scroll fractions (0–1).
+     HOME HERO: one pinned screen, two phases (markup in index.html, look in site.css).
+     At rest the visitor drags the line between her photograph and her drawing (.zh-stage, --x).
+     Phase one (first HERO_PHASE of the scroll): the line glides from where the visitor left it to 0,
+     so only the drawing is left; the photograph, labels and hint fade.
+     Phase two: the drawing (.zh-ink, the one and only drawing element) grows to its old end size
+     and moves to the centre; the captions .zh-say[data-from][data-to] show between those fractions
+     of phase two. Scrolling back reverses it and gives the line back to the visitor.
+     Reduced motion: no scroll animation, the split still works.
      ===================================================================== */
-  var HERO_END_SCALE = 4.4;
+  var HERO_END_SCALE = 4.4, HERO_PHASE = 60 / 320;      /* must match .zh height in site.css: 60vh of 320vh */
   function initHero() {
-    var heroes = $$('.zh').map(function (h) {
-      if (SK.heroSizeConfirmed) h.setAttribute('data-size-confirmed', '');
-      return { h: h, img: $('img', h), hint: $('.zh-hint', h), open: $('.zh-open', h), says: $$('.zh-say', h),
-        bar: SK.heroSizeConfirmed ? $('.scalebar', h) : null, plate: $('.zh-plate', h), mm: +h.dataset.mm || 210 };
-    }).filter(function (o) { return o.img; });
-    if (!heroes.length || reducedMotion) return null;           /* reduced motion: CSS shows a still, legible hero */
+    var h = $('.zh'), stage = h && $('.zh-stage', h);
+    if (!stage) return null;
+    var ink = $('.zh-ink', h), line = $('.zh-line', h), open = $('.zh-open', h), go = $('.zh-go', h),
+      says = $$('.zh-say', h), plate = $('.zh-plate', h), photo = $('.zh-photo', h), paper = $('.zh-paper', h), hint = $('.zh-hint', h),
+      soft = [$('.zh-labels', h), $('.zh-cap', h), hint, line].filter(Boolean),
+      bar = SK.heroSizeConfirmed ? $('.scalebar', h) : null, mm = +h.dataset.mm || 210;
+    if (SK.heroSizeConfirmed) h.setAttribute('data-size-confirmed', '');
+    var ease = function (t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
+    var userX = 50, nudge = 0, shown = userX, phaseOne = 0, drag = null, touched = false, ticking = false;
 
-    function startScale(o) {
-      var v = getComputedStyle(o.h).getPropertyValue('--hero-start').trim(), base = o.img.offsetHeight || 1;
-      if (/vh$/.test(v)) return clamp(parseFloat(v) * window.innerHeight / 100 / base, 0.05, 1);
-      if (/px$/.test(v)) return clamp(parseFloat(v) / base, 0.05, 1);
-      return parseFloat(v) || 0.16;
+    /* the handle: a real slider */
+    var handle = document.createElement('span');
+    handle.className = 'zh-handle'; handle.tabIndex = 0; handle.setAttribute('role', 'slider');
+    handle.setAttribute('aria-label', 'Move between the photograph and the drawing');
+    handle.setAttribute('aria-valuemin', '0'); handle.setAttribute('aria-valuemax', '100');
+    if (hint) { hint.id = hint.id || 'zh-hint'; handle.setAttribute('aria-describedby', hint.id); }
+    line.removeAttribute('aria-hidden'); line.appendChild(handle);
+
+    function setUser(v) { userX = clamp(v, 0, 100); touched = true; nudge = 0; queue(); }
+    function at(e) { var r = stage.getBoundingClientRect(); return (e.clientX - r.left) / r.width * 100; }
+    stage.addEventListener('pointerdown', function (e) {
+      if (e.button > 0 || phaseOne > 0.02) return;
+      drag = { id: e.pointerId, x0: e.clientX, y0: e.clientY, live: e.pointerType === 'mouse' || e.target === handle };
+      if (drag.live) { e.preventDefault(); try { stage.setPointerCapture(e.pointerId); } catch (_) {} h.classList.add('dragging'); setUser(at(e)); }
+    });
+    stage.addEventListener('pointermove', function (e) {
+      if (!drag || e.pointerId !== drag.id) return;
+      if (!drag.live) {          /* touch: only a mostly sideways move takes the line; a vertical one stays a scroll */
+        var dx = Math.abs(e.clientX - drag.x0), dy = Math.abs(e.clientY - drag.y0);
+        if (dx > 8 && dx > dy) { drag.live = true; try { stage.setPointerCapture(e.pointerId); } catch (_) {} h.classList.add('dragging'); } else return;
+      }
+      setUser(at(e));
+    });
+    function end(e) {
+      if (!drag || e.pointerId !== drag.id) return;
+      if (!drag.live && e.type === 'pointerup' && Math.abs(e.clientX - drag.x0) < 8 && Math.abs(e.clientY - drag.y0) < 8) setUser(at(e));
+      drag = null; h.classList.remove('dragging');
     }
-    var ticking = false;
+    stage.addEventListener('pointerup', end); stage.addEventListener('pointercancel', end);
+    handle.addEventListener('keydown', function (e) {
+      var k = e.key, step = e.shiftKey ? 10 : 2, v = userX;
+      if (k === 'ArrowRight' || k === 'ArrowUp') v += step; else if (k === 'ArrowLeft' || k === 'ArrowDown') v -= step;
+      else if (k === 'PageUp') v += 10; else if (k === 'PageDown') v -= 10; else if (k === 'Home') v = 0; else if (k === 'End') v = 100; else return;
+      e.preventDefault(); setUser(v);
+    });
+
     function frame() {
       ticking = false;
-      /* read everything first … */
-      var vh = window.innerHeight;
-      var state = heroes.map(function (o) {
-        var r = o.h.getBoundingClientRect();
-        return { p: clamp(-r.top / Math.max(1, r.height - vh), 0, 1), s0: startScale(o), w: o.img.offsetWidth };
-      });
+      /* read … */
+      var vh = window.innerHeight, vw = document.documentElement.clientWidth, r = h.getBoundingClientRect(),
+        sr = stage.getBoundingClientRect(), iw = ink.offsetWidth, ih = ink.offsetHeight,
+        p = reducedMotion ? 0 : clamp(-r.top / Math.max(1, r.height - vh), 0, 1);
+      var a = clamp(p / HERO_PHASE, 0, 1), b = clamp((p - HERO_PHASE) / (1 - HERO_PHASE), 0, 1), ea = ease(a);
+      phaseOne = a;
+      shown = clamp(userX + nudge, 0, 100) * (1 - ea);
       /* … then write */
-      heroes.forEach(function (o, i) {
-        var p = state[i].p, s = state[i].s0 * Math.pow(HERO_END_SCALE / state[i].s0, p);
-        o.img.style.transform = 'scale(' + s + ')';
-        if (o.hint) o.hint.style.opacity = Math.max(0, 1 - p * 7);
-        if (o.open) o.open.style.opacity = Math.max(0, 1 - p * 8);
-        o.says.forEach(function (n) { n.style.opacity = clamp(Math.min((p - +n.dataset.from) / 0.04, (+n.dataset.to - p) / 0.04), 0, 1); });
-        if (o.plate) o.plate.style.opacity = Math.max(0, 1 - Math.max(0, p - 0.45) * 5);
-        if (o.bar) setScaleBar(o.bar, state[i].w * s / o.mm);
-      });
+      stage.style.setProperty('--x', shown + '%');
+      handle.setAttribute('aria-valuenow', String(Math.round(shown)));
+      handle.setAttribute('aria-valuetext', Math.round(100 - shown) + '% drawing');
+      if (reducedMotion) return;
+      var fade = Math.max(0, 1 - a * 1.6);
+      soft.forEach(function (n) { n.style.opacity = fade; });
+      if (photo) photo.style.opacity = Math.max(0, 1 - a * 1.2);
+      if (paper) paper.style.opacity = b > 0 ? 0 : 1;
+      line.style.visibility = fade > 0 ? '' : 'hidden';
+      if (open) open.style.opacity = Math.max(0, 1 - a * 1.3);
+      if (go) go.style.opacity = clamp((a - .6) / .3, 0, 1) * Math.max(0, 1 - b * 10);
+      /* phase two: grow from the split size to the old end size, moving the zoom point to the centre */
+      var endScale = Math.max(1.01, HERO_END_SCALE * Math.min(vh, vw) * .74 / Math.max(1, iw)),
+        s = Math.pow(endScale, b), k = 1 - ease(clamp(b / .12, 0, 1)), m = ease(clamp(b / .35, 0, 1)),
+        ox = sr.left + (-.23788 + .46 * 1.31747) * sr.width, oy = sr.top - .17567 * sr.width + .5 * ih,
+        tx = (vw / 2 - ox) * m, ty = (vh / 2 - oy) * m;
+      ink.style.transform = 'translate(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px) scale(' + s.toFixed(4) + ')';
+      ink.style.clipPath = 'inset(' + (13.333 * k).toFixed(3) + '% ' + (6.042 * k).toFixed(3) + '% ' + (10.833 * k).toFixed(3) + '% ' + ((18.056 + shown * .75903) * k).toFixed(3) + '%)';
+      says.forEach(function (n) { n.style.opacity = clamp(Math.min((b - +n.dataset.from) / 0.04, (+n.dataset.to - b) / 0.04), 0, 1); });
+      if (plate) plate.style.opacity = clamp(b * 8, 0, 1) * Math.max(0, 1 - Math.max(0, b - 0.45) * 5);
+      if (bar) setScaleBar(bar, iw * s / mm);
     }
     function queue() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
     window.addEventListener('scroll', queue, { passive: true });
+
+    /* once both pictures have loaded: one small, slow nudge of the line, so it reads as something that moves */
+    if (!reducedMotion) {
+      var imgs = [ink, photo && $('img', photo)].filter(Boolean);
+      Promise.all(imgs.map(function (im) { return im.complete ? 0 : new Promise(function (res) { im.addEventListener('load', res); im.addEventListener('error', res); }); }))
+        .then(function () {
+          setTimeout(function () {
+            if (touched || window.scrollY > 40) return;
+            var t0 = 0, D = 1800;
+            requestAnimationFrame(function f(t) {
+              if (touched) { nudge = 0; queue(); return; }
+              if (!t0) t0 = t;
+              var q = Math.min(1, (t - t0) / D);
+              nudge = 7 * Math.sin(Math.PI * ease(q)); queue();
+              if (q < 1) requestAnimationFrame(f); else { nudge = 0; queue(); }
+            });
+          }, 700);
+        });
+    }
     return queue;
   }
 

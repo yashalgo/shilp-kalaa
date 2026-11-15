@@ -1,4 +1,4 @@
-/* Shilp Kalaa · the narrative pages: the split view (Home), the step navigation, the reel and
+/* Shilp Kalaa · the narrative pages: the step navigation, the reel and
    "One sheet, closer and closer" (Process). Progressive enhancement: every page reads fully without it. */
 (function(){
   var $=function(s,r){return(r||document).querySelector(s)},$$=function(s,r){return[].slice.call((r||document).querySelectorAll(s))};
@@ -11,58 +11,6 @@
   function headH(){if(head)document.documentElement.style.setProperty('--head-h',head.offsetHeight+'px')}
   headH();addEventListener('resize',headH);
 
-  /* ---------------------------------------------------------------- split view */
-  function Split(fig){
-    var stage=$('.split-stage',fig),line=$('.split-line',stage),x=+fig.dataset.split||50,drag=null,touched=false,hintRaf=0;
-    var h=document.createElement('span');
-    h.className='split-handle';h.tabIndex=0;h.setAttribute('role','slider');
-    h.setAttribute('aria-label','Move between the photograph and the drawing');
-    h.setAttribute('aria-valuemin','0');h.setAttribute('aria-valuemax','100');
-    if($('#split-hint'))h.setAttribute('aria-describedby','split-hint');
-    line.removeAttribute('aria-hidden');line.appendChild(h);
-    function set(v){x=clamp(v,0,100);stage.style.setProperty('--x',x+'%');h.setAttribute('aria-valuenow',String(Math.round(x)));h.setAttribute('aria-valuetext',Math.round(100-x)+'% drawing')}
-    function at(e){var r=stage.getBoundingClientRect();return (e.clientX-r.left)/r.width*100}
-    function stopHint(){touched=true;if(hintRaf){cancelAnimationFrame(hintRaf);hintRaf=0}}
-    stage.addEventListener('pointerdown',function(e){
-      if(e.button>0)return;stopHint();
-      var onHandle=e.target===h;
-      drag={id:e.pointerId,x0:e.clientX,y0:e.clientY,live:e.pointerType==='mouse'||onHandle};
-      if(drag.live){e.preventDefault();stage.setPointerCapture(e.pointerId);fig.classList.add('is-dragging');set(at(e))}
-    });
-    stage.addEventListener('pointermove',function(e){
-      if(!drag||e.pointerId!==drag.id)return;
-      if(!drag.live){var dx=Math.abs(e.clientX-drag.x0),dy=Math.abs(e.clientY-drag.y0);if(dx>8&&dx>dy){drag.live=true;try{stage.setPointerCapture(e.pointerId)}catch(_){}fig.classList.add('is-dragging')}else return}
-      set(at(e));
-    });
-    function end(e){
-      if(!drag||e.pointerId!==drag.id)return;
-      /* a tap on a phone moves the line to where the finger landed */
-      if(!drag.live&&e.type==='pointerup'&&Math.abs(e.clientX-drag.x0)<8&&Math.abs(e.clientY-drag.y0)<8)set(at(e));
-      drag=null;fig.classList.remove('is-dragging');
-    }
-    stage.addEventListener('pointerup',end);stage.addEventListener('pointercancel',end);
-    h.addEventListener('keydown',function(e){
-      var k=e.key,step=e.shiftKey?10:2,v=x;
-      if(k==='ArrowRight'||k==='ArrowUp')v+=step;else if(k==='ArrowLeft'||k==='ArrowDown')v-=step;
-      else if(k==='PageUp')v+=10;else if(k==='PageDown')v-=10;else if(k==='Home')v=0;else if(k==='End')v=100;else return;
-      e.preventDefault();stopHint();set(v);
-    });
-    set(x);fig.classList.add('is-live');
-    /* one gentle sweep the first time it comes into view, so the line reads as something that moves */
-    if(!reduced&&'IntersectionObserver'in window){
-      var io=new IntersectionObserver(function(es){es.forEach(function(en){
-        if(!en.isIntersecting||touched)return;io.disconnect();
-        var keys=[[0,50],[.32,38],[.68,60],[1,50]],D=2600,t0=0;
-        setTimeout(function(){if(touched)return;hintRaf=requestAnimationFrame(function f(t){
-          if(!t0)t0=t;var p=Math.min(1,(t-t0)/D),i=1;while(keys[i][0]<p)i++;
-          var a=keys[i-1],b=keys[i],q=ease((p-a[0])/(b[0]-a[0]));set(a[1]+(b[1]-a[1])*q);
-          hintRaf=p<1&&!touched?requestAnimationFrame(f):0;
-        })},500);
-      })},{threshold:.6});
-      io.observe(stage);
-    }
-  }
-  $$('[data-split]').forEach(function(f){new Split(f)});
 
   /* ---------------------------------------------------------------- process: step bar */
   var nav=$('.p-nav');
