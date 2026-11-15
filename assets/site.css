@@ -1,12 +1,13 @@
 /* Shilp Kalaa · one stylesheet for every page.
    Colours, spacing and lettering are tokens on :root; change them here and every page follows. */
 *{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
 :root{
-  --paper:#f3efe6;--ink:#24221d;--soft:#7c7566;--rule:#d6cfbf;--moss:#5f6f3e;
+  --paper:#f3efe6;--ink:#24221d;--soft:#625d50;--rule:#d6cfbf;--moss:#5f6f3e;
   --pad:48px;
   /* lettering: serif (default) */
   --f-title:'Cormorant Garamond',serif;--t-style:italic;--t-weight:400;--st-weight:300;--t-case:none;--t-track:-.01em;--t-scale:1;
-  --f-label:'IBM Plex Mono',monospace;--l-case:uppercase;--l-track:.05em;--l-size:11px;--l-weight:300;
+  --f-label:'IBM Plex Mono',monospace;--l-case:uppercase;--l-track:.05em;--l-size:12px;--l-weight:300;
   --f-body:'Cormorant Garamond',serif;--b-size:18px;--b-weight:400;
   --wm-font:'Cormorant Garamond',serif;--wm-size:15px;--wm-weight:500;--wm-track:.34em;--wm-case:uppercase}
 /* other lettering sets: set "lettering" in assets/works.js to switch the whole site */
@@ -50,34 +51,56 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .links a:hover,.line:hover{color:var(--moss);border-color:var(--moss)}
 
 /* ---------- header and footer ---------- */
-.head{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:flex-start;gap:24px;padding:34px var(--pad)}
+.head{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:flex-start;gap:24px;padding:34px var(--pad);background:var(--paper);transition:transform .25s ease}
+/* hides while scrolling down (site.js sets .head-away), returns on the way up */
+.head-away .head{transform:translateY(-105%)}
 .wm{font:var(--wm-weight) var(--wm-size)/1 var(--wm-font);letter-spacing:var(--wm-track);text-transform:var(--wm-case);white-space:nowrap}
 .wm span{display:block;margin-top:9px}
 .head nav{display:flex;gap:32px}
-.head nav a{transition:color .3s}
+.head nav a{transition:color .3s;padding:14px 0;margin:-14px 0}   /* 44px touch target, same look */
 .head nav a:hover,.head nav a[aria-current]{color:var(--ink)}
-.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 32px;margin:0 var(--pad);padding:26px 0 34px;border-top:1px solid var(--rule)}
-.foot nav{display:flex;flex-wrap:wrap;gap:8px 28px}
-.foot a:hover{color:var(--ink)}
+/* footer: the last invitation. Title and its attribution on the left, the sentence and the way to write
+   on the right, then one quiet mono line with the links and the copyright. */
+.foot{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:8vw;margin:0 var(--pad);padding:clamp(64px,8vw,120px) 0 34px;border-top:1px solid var(--rule)}
+.foot-call h2{font-size:calc(clamp(44px,5.4vw,84px)*var(--t-scale));line-height:1;font-weight:var(--st-weight)}
+.foot-call .lab{margin-top:16px}
+.foot-body{align-self:end;max-width:30em}
+.foot-body p{font-size:calc(var(--b-size)*1.2);line-height:1.5}
+.foot-write{margin-top:22px}
+.foot-write .line{display:inline-block;padding-top:10px}
+.foot-base{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 32px;margin-top:clamp(56px,7vw,100px);padding-top:18px;border-top:1px solid var(--rule)}
+.foot-base nav a{display:inline-block;padding:12px 0;margin:-12px 0}
+.foot-base a:hover{color:var(--ink)}
+.foot-base p{text-transform:none;letter-spacing:.02em}
+/* phone menu extras: hidden in the desktop header */
+.head nav .gloss,.head nav .menu-foot{display:none}
 
-.rv{opacity:0;transform:translateY(14px);transition:opacity 1.2s ease,transform 1.2s ease}
-.rv.in{opacity:1;transform:none}
+/* reveal: a short fade only, and only when scripts run (html.js), so nothing is hidden without JS */
+.js .rv{opacity:0;transition:opacity .45s ease}
+.js .rv.in{opacity:1}
+
+/* skip link, menu button (phones only) */
+.skip-link{position:fixed;z-index:30;left:12px;top:12px;padding:12px 16px;background:var(--ink);color:var(--paper);transform:translateY(-200%)}
+.skip-link:focus{transform:none}
+.menu-toggle{display:none;min-width:44px;min-height:44px;padding:0 4px;color:var(--ink)}
 
 /* ---------- scale bar ---------- */
 .scalebar{display:inline-flex;flex-direction:column;gap:7px}
 .scalebar i{display:block;height:6px;border:1px solid currentColor;border-top:0;transition:width .35s ease}
 
 /* ---------- home: scroll-zoom opening ---------- */
-.zh{height:360vh}
+.zh{height:360vh;--hero-start:24vh}   /* starting height of the drawing (a length, or a plain number = scale) */
+.zh .scalebar{display:none}
+.zh[data-size-confirmed] .scalebar{display:inline-flex}
 .zh-sticky{position:sticky;top:0;height:100vh;min-height:520px;overflow:hidden;display:grid;place-items:center}
-.zh-sticky img{width:min(74vh,74vw);transform:scale(.16);transform-origin:46% 50%;will-change:transform}
+.zh-sticky img{width:min(74vh,74vw);height:auto;transform:scale(.16);transform-origin:46% 50%;will-change:transform}
 .zh-hint{position:absolute;left:50%;bottom:8vh;translate:-50% 0;display:flex;flex-direction:column;align-items:center;gap:16px}
 .zh-hint::after{content:"";width:1px;height:46px;background:var(--soft);transform-origin:top;animation:drip 2.6s ease-in-out infinite}
 @keyframes drip{0%{transform:scaleY(0)}55%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
 .zh-sticky .scalebar{position:absolute;left:var(--pad);bottom:36px;background:var(--paper);padding:8px 10px 6px;margin:-8px -10px -6px}
 .zh-plate{position:absolute;right:var(--pad);bottom:36px;text-align:right}
 /* the opening words sit above the small drawing and fade as the visitor scrolls in */
-.zh-open{position:absolute;z-index:1;left:var(--pad);right:var(--pad);bottom:calc(50% + 11vh);text-align:center}
+.zh-open{position:absolute;z-index:1;left:var(--pad);right:var(--pad);bottom:calc(50% + var(--hero-start)/2 + 3vh);text-align:center}
 .zh-open .lab{margin-bottom:16px}
 .zh-open .lede{font-size:calc(clamp(28px,3.6vw,54px)*var(--t-scale));max-width:17em;margin:0 auto}
 /* short lines that appear one at a time during the zoom */
@@ -134,7 +157,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .grid a{display:block}
 .grid .frame{aspect-ratio:1;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .grid .frame img{width:100%;height:100%;object-fit:contain;transition:transform 1.4s cubic-bezier(.22,.61,.36,1)}
-.grid a:hover .frame img{transform:scale(1.045)}
+.grid a:hover .frame img,.grid a:focus-visible .frame img{transform:scale(1.045)}
+.grid a:focus-visible{outline:0}
+.grid a:focus-visible .frame{outline:1px solid var(--moss);outline-offset:6px}
+.grid figcaption b{transition:color .3s}
+.grid a:hover figcaption b,.grid a:focus-visible figcaption b{color:var(--moss)}
 .grid figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-top:20px;border-top:1px solid var(--rule);padding-top:12px}
 .grid figcaption b{font-size:calc(21px*var(--t-scale));line-height:1.2}
 .grid figcaption span{white-space:nowrap}
@@ -193,7 +220,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .form .hp{position:absolute;left:-9999px}
 .form .send{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px}
 .btn{padding:14px 30px;border:1px solid var(--ink);border-radius:999px;transition:background .3s,color .3s}
-.btn:hover{background:var(--ink);color:var(--paper)}
+.btn{color:var(--ink)}
+.btn:hover,.btn:focus-visible{background:var(--ink);color:var(--paper)}
 .btn[disabled]{opacity:.5;cursor:default}
 .form-note{color:var(--ink)}
 
@@ -206,17 +234,21 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .zoom img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:0 0;will-change:transform;-webkit-user-drag:none;pointer-events:none}
 .zoom.anim img{transition:transform 1.1s cubic-bezier(.22,.61,.36,1)}
 .a-view .scalebar{position:absolute;left:40px;bottom:30px}
-.a-view .hint{position:absolute;left:50%;bottom:30px;translate:-50% 0;white-space:nowrap;transition:opacity .6s}
+.a-view .hint{position:absolute;left:40px;right:200px;bottom:26px;max-width:46em;line-height:1.45}
 .a-view .ctrl{position:absolute;right:40px;bottom:24px;display:flex;gap:8px}
-.a-view .ctrl button{width:36px;height:36px;border:1px solid var(--rule);border-radius:50%;font:300 17px/1 system-ui,sans-serif;background:var(--paper);transition:border-color .3s}
+.a-view .ctrl button{width:44px;height:44px;border:1px solid var(--rule);border-radius:50%;font:300 17px/1 system-ui,sans-serif;background:var(--paper);transition:border-color .3s}
 .a-view .ctrl button:hover{border-color:var(--ink)}
 .a-data{border-left:1px solid var(--rule);padding:120px var(--pad) 34px 40px;display:flex;flex-direction:column;gap:32px;overflow-y:auto}
 .a-data h1{font-size:calc(34px*var(--t-scale));line-height:1.1}
 .a-data dl{display:grid;grid-template-columns:84px 1fr;row-gap:10px;line-height:1.35}
 .a-data dt{padding-top:2px}
-.a-looks{display:flex;flex-direction:column;border-top:1px solid var(--rule);margin-top:10px}
-.a-looks button{display:flex;gap:16px;align-items:baseline;text-align:left;padding:13px 0;border-bottom:1px solid var(--rule);font-size:calc(var(--b-size)*1.05);transition:color .3s}
+/* close looks: written twice by the build, beside the drawing on wide screens (.a-looks-side)
+   and directly under it on phones and tablets (.a-looks-under); CSS shows one */
+.a-looks-under{display:none}
+.a-looks-list{display:flex;flex-direction:column;border-top:1px solid var(--rule);margin-top:10px}
+.a-looks button{display:flex;gap:16px;align-items:baseline;text-align:left;min-height:44px;padding:13px 0;border-bottom:1px solid var(--rule);font-size:calc(var(--b-size)*1.05);transition:color .3s}
 .a-looks button:hover,.a-looks button.on{color:var(--moss)}
+.look-note{margin-top:12px;font-style:var(--t-style);font-family:var(--f-title);color:var(--soft);min-height:1.5em}
 .a-end{margin-top:auto;display:flex;flex-direction:column;gap:22px;align-items:flex-start}
 .a-nav{display:flex;justify-content:space-between;width:100%;border-top:1px solid var(--rule);padding-top:14px}
 .a-nav a:hover{color:var(--ink)}
@@ -238,12 +270,37 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .a-view{height:78vh;min-height:460px}
   .a-data{border-left:0;border-top:1px solid var(--rule);padding:34px var(--pad) 40px;overflow:visible}
   .a-end{margin-top:10px}
+  /* viewer, then hint and buttons in a row under it (never over the drawing) */
+  .a-view{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:minmax(0,1fr) auto;gap:14px 20px;padding-bottom:16px}
+  .a-view .zoom{grid-column:1/-1;height:auto}
+  .a-view .hint,.a-view .ctrl{position:static}
+  .a-view .scalebar{position:static;grid-column:1/-1}
+  .a-looks-side{display:none}
+  .a-looks-under{display:block;padding:20px var(--pad) 8px}
+  .a-looks-under .a-looks-list{flex-direction:row;flex-wrap:wrap;gap:10px;border-top:0;margin-top:8px}
+  .a-looks-under button{border:1px solid var(--rule);border-radius:999px;padding:9px 16px;font-size:var(--b-size)}
+  .a-looks-under button.on{border-color:var(--moss)}
 }
 @media (max-width:640px){
   :root{--pad:20px}
-  .head{flex-direction:column;gap:20px;padding-top:24px}
-  .head nav{gap:20px}
-  .zh-open{bottom:calc(50% + 9vh)}
+  /* phones: one Menu button opens a full-screen paper sheet */
+  .head{align-items:center;padding:12px var(--pad)}
+  .head .wm span{display:none}
+  .menu-toggle{display:block;margin-left:auto}
+  .head nav{display:none}
+  .menu-open,.menu-open body{overflow:hidden}
+  .menu-open .head{height:100vh;height:100dvh;align-items:flex-start;transform:none}
+  .menu-open .head .wm{margin-top:14.5px}   /* (44px button − 15px wordmark) / 2: stays where it was */
+  .menu-open .head nav{display:flex;position:absolute;top:96px;left:var(--pad);right:var(--pad);flex-direction:column;gap:6px}
+  .menu-open .head nav a{font:var(--t-style) var(--t-weight) calc(40px*var(--t-scale))/1.1 var(--f-title);letter-spacing:var(--t-track);text-transform:none;color:var(--ink);padding:8px 0;margin:0}
+  .menu-open .head nav a[aria-current]{color:var(--moss)}
+  .menu-open .head nav .gloss{display:block;font:var(--l-weight) var(--l-size)/1.6 var(--f-label);letter-spacing:var(--l-track);text-transform:none;color:var(--soft);margin-top:2px}
+  .menu-open .head nav{gap:14px}
+  .menu-open .head nav>a{display:block}
+  .menu-open .head nav .menu-foot{display:block;margin-top:28px;padding-top:18px;border-top:1px solid var(--rule);color:var(--soft)}
+  .menu-open .head nav .menu-foot a{display:inline-block;font:var(--l-weight) var(--l-size)/1.6 var(--f-label);letter-spacing:var(--l-track);text-transform:uppercase;color:var(--soft);padding:12px 0}
+  .foot{grid-template-columns:1fr;row-gap:30px}
+  .foot-base{flex-direction:column;margin-top:40px}
   .zh-say{bottom:84px;white-space:normal;width:max-content}
   .h-sec,.h-about{padding-bottom:14vh}
   .h-head{margin-bottom:48px}
@@ -263,16 +320,21 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .proj{padding-bottom:80px}
   .form{grid-template-columns:1fr}
   .zh-plate{display:none}
-  .a-view{padding:150px 16px 84px}
-  .a-view .scalebar{left:16px}
-  .a-view .ctrl{right:16px}
-  .a-view .hint{display:none}
+  .a-view{padding:76px 16px 12px}
   .notes{gap:16px}
 }
 @media (prefers-reduced-motion:reduce){
-  .rv{opacity:1;transform:none;transition:none}
-  .zoom.anim img,.grid .frame img{transition:none}
+  .js .rv{opacity:1;transition:none}
+  .head,.zoom.anim img,.grid .frame img,.cards img{transition:none}
   .zh-hint::after{animation:none}
+  /* the scroll hero becomes a still page: opening words, the drawing whole, its captions */
+  .zh{height:auto}
+  .zh-sticky{position:relative;height:auto;min-height:0;display:flex;flex-direction:column;align-items:center;gap:28px;padding:150px var(--pad) 80px}
+  .zh-sticky img{transform:none;width:min(70vh,100%)}
+  .zh-open,.zh-say,.zh-plate,.zh-sticky .scalebar{position:static;translate:none;opacity:1;margin:0}
+  .zh-say{white-space:normal;width:auto;max-width:none;padding:0}
+  .zh-plate{text-align:center}
+  .zh-hint{display:none}
 }
 
 /* ---------- about: plain facts and questions ---------- */
@@ -287,3 +349,31 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* the page for a missing address */
 .lost{min-height:100vh;display:grid;place-content:center;justify-items:start;gap:28px;padding:140px var(--pad) 80px}
 .lost .lede{max-width:13em}
+
+/* ---------- Write page: direct routes, the plate a visitor came from ---------- */
+.write-routes{display:flex;flex-direction:column;gap:34px}
+.direct-routes{border-top:1px solid var(--rule);padding-top:20px}
+.direct-routes p+p{display:flex;flex-wrap:wrap;gap:12px 32px;margin-top:14px;font-size:calc(var(--b-size)*1.15)}
+.contact-email{border-top:1px solid var(--rule);padding-top:20px}
+.about-plate{display:flex;gap:16px;align-items:center;margin:0 0 28px}
+.about-plate img{width:72px;height:72px;object-fit:cover}
+.about-plate b{display:block;font-size:calc(22px*var(--t-scale))}
+
+/* ---------- container limits: tablets and very wide screens ---------- */
+@media (min-width:641px) and (max-width:1000px){
+  .page,.work-top,.plates,.h-sec{max-width:900px;margin-left:auto;margin-right:auto}
+}
+@media (min-width:1601px){
+  .page,.work-top,.plates,.h-sec,.d-intro,.h-about,.call,.foot{max-width:1500px;margin-left:auto;margin-right:auto}
+  .foot{width:calc(100% - 2*var(--pad))}
+}
+/* short footer: only the last line, for pages that end with their own invitation */
+.foot-short{display:block;padding-top:0;border-top:0;margin-top:clamp(48px,6vw,90px)}
+.foot-short .foot-base{margin-top:0}
+/* touch targets of at least 44px on phones and touch screens; the visible style is unchanged */
+@media (pointer:coarse),(max-width:640px){
+  .head .wm{display:inline-flex;flex-direction:column;justify-content:center;min-height:44px}
+  .foot-base nav a{display:inline-flex;align-items:center;min-height:44px;padding:0;margin:0}
+  a.line,.links a{position:relative}
+  a.line::after,.links a::after{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:44px;transform:translateY(-50%)}
+}

@@ -1,0 +1,2665 @@
+{
+  "version": 1,
+  "images": {
+    "404-crack.jpg": {
+      "width": 240,
+      "height": 240,
+      "variants": [
+        {
+          "width": 240,
+          "jpeg": "images/generated/404-crack-240.jpg",
+          "webp": "images/generated/404-crack-240.webp"
+        }
+      ]
+    },
+    "about.jpg": {
+      "width": 1440,
+      "height": 1800,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/about-480.jpg",
+          "webp": "images/generated/about-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/about-768.jpg",
+          "webp": "images/generated/about-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/about-1200.jpg",
+          "webp": "images/generated/about-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/about-1440.jpg",
+          "webp": "images/generated/about-1440.webp"
+        }
+      ]
+    },
+    "atwork-acorn-palm.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/atwork-acorn-palm-480.jpg",
+          "webp": "images/generated/atwork-acorn-palm-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/atwork-acorn-palm-768.jpg",
+          "webp": "images/generated/atwork-acorn-palm-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/atwork-acorn-palm-1200.jpg",
+          "webp": "images/generated/atwork-acorn-palm-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/atwork-acorn-palm-1440.jpg",
+          "webp": "images/generated/atwork-acorn-palm-1440.webp"
+        }
+      ]
+    },
+    "atwork-acorns-handful.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/atwork-acorns-handful-480.jpg",
+          "webp": "images/generated/atwork-acorns-handful-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/atwork-acorns-handful-768.jpg",
+          "webp": "images/generated/atwork-acorns-handful-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/atwork-acorns-handful-1200.jpg",
+          "webp": "images/generated/atwork-acorns-handful-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/atwork-acorns-handful-1440.jpg",
+          "webp": "images/generated/atwork-acorns-handful-1440.webp"
+        }
+      ]
+    },
+    "atwork-drawing-held-park.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/atwork-drawing-held-park-480.jpg",
+          "webp": "images/generated/atwork-drawing-held-park-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/atwork-drawing-held-park-768.jpg",
+          "webp": "images/generated/atwork-drawing-held-park-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/atwork-drawing-held-park-1200.jpg",
+          "webp": "images/generated/atwork-drawing-held-park-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/atwork-drawing-held-park-1440.jpg",
+          "webp": "images/generated/atwork-drawing-held-park-1440.webp"
+        }
+      ]
+    },
+    "atwork-moss-paper-hands.jpg": {
+      "width": 720,
+      "height": 500,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/atwork-moss-paper-hands-480.jpg",
+          "webp": "images/generated/atwork-moss-paper-hands-480.webp"
+        },
+        {
+          "width": 720,
+          "jpeg": "images/generated/atwork-moss-paper-hands-720.jpg",
+          "webp": "images/generated/atwork-moss-paper-hands-720.webp"
+        }
+      ]
+    },
+    "branches.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/branches-480.jpg",
+          "webp": "images/generated/branches-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/branches-768.jpg",
+          "webp": "images/generated/branches-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/branches-1200.jpg",
+          "webp": "images/generated/branches-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/branches-1440.jpg",
+          "webp": "images/generated/branches-1440.webp"
+        }
+      ]
+    },
+    "bricks-1.jpg": {
+      "width": 1440,
+      "height": 1800,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/bricks-1-480.jpg",
+          "webp": "images/generated/bricks-1-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/bricks-1-768.jpg",
+          "webp": "images/generated/bricks-1-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/bricks-1-1200.jpg",
+          "webp": "images/generated/bricks-1-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/bricks-1-1440.jpg",
+          "webp": "images/generated/bricks-1-1440.webp"
+        }
+      ]
+    },
+    "bricks-2.jpg": {
+      "width": 1440,
+      "height": 1801,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/bricks-2-480.jpg",
+          "webp": "images/generated/bricks-2-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/bricks-2-768.jpg",
+          "webp": "images/generated/bricks-2-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/bricks-2-1200.jpg",
+          "webp": "images/generated/bricks-2-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/bricks-2-1440.jpg",
+          "webp": "images/generated/bricks-2-1440.webp"
+        }
+      ]
+    },
+    "bricks-3.jpg": {
+      "width": 1440,
+      "height": 1801,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/bricks-3-480.jpg",
+          "webp": "images/generated/bricks-3-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/bricks-3-768.jpg",
+          "webp": "images/generated/bricks-3-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/bricks-3-1200.jpg",
+          "webp": "images/generated/bricks-3-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/bricks-3-1440.jpg",
+          "webp": "images/generated/bricks-3-1440.webp"
+        }
+      ]
+    },
+    "calendar-2023-stand.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/calendar-2023-stand-480.jpg",
+          "webp": "images/generated/calendar-2023-stand-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/calendar-2023-stand-768.jpg",
+          "webp": "images/generated/calendar-2023-stand-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/calendar-2023-stand-1200.jpg",
+          "webp": "images/generated/calendar-2023-stand-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/calendar-2023-stand-1440.jpg",
+          "webp": "images/generated/calendar-2023-stand-1440.webp"
+        }
+      ]
+    },
+    "calendar-2023-twelve.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/calendar-2023-twelve-480.jpg",
+          "webp": "images/generated/calendar-2023-twelve-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/calendar-2023-twelve-768.jpg",
+          "webp": "images/generated/calendar-2023-twelve-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/calendar-2023-twelve-1200.jpg",
+          "webp": "images/generated/calendar-2023-twelve-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/calendar-2023-twelve-1440.jpg",
+          "webp": "images/generated/calendar-2023-twelve-1440.webp"
+        }
+      ]
+    },
+    "canopy.jpg": {
+      "width": 1440,
+      "height": 1800,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/canopy-480.jpg",
+          "webp": "images/generated/canopy-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/canopy-768.jpg",
+          "webp": "images/generated/canopy-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/canopy-1200.jpg",
+          "webp": "images/generated/canopy-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/canopy-1440.jpg",
+          "webp": "images/generated/canopy-1440.webp"
+        }
+      ]
+    },
+    "closer-1-whole.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/closer-1-whole-480.jpg",
+          "webp": "images/generated/closer-1-whole-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/closer-1-whole-768.jpg",
+          "webp": "images/generated/closer-1-whole-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/closer-1-whole-1200.jpg",
+          "webp": "images/generated/closer-1-whole-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/closer-1-whole-1440.jpg",
+          "webp": "images/generated/closer-1-whole-1440.webp"
+        }
+      ]
+    },
+    "closer-2-middle.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/closer-2-middle-480.jpg",
+          "webp": "images/generated/closer-2-middle-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/closer-2-middle-768.jpg",
+          "webp": "images/generated/closer-2-middle-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/closer-2-middle-1200.jpg",
+          "webp": "images/generated/closer-2-middle-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/closer-2-middle-1440.jpg",
+          "webp": "images/generated/closer-2-middle-1440.webp"
+        }
+      ]
+    },
+    "closer-3-leaves.jpg": {
+      "width": 1268,
+      "height": 1268,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/closer-3-leaves-480.jpg",
+          "webp": "images/generated/closer-3-leaves-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/closer-3-leaves-768.jpg",
+          "webp": "images/generated/closer-3-leaves-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/closer-3-leaves-1200.jpg",
+          "webp": "images/generated/closer-3-leaves-1200.webp"
+        },
+        {
+          "width": 1268,
+          "jpeg": "images/generated/closer-3-leaves-1268.jpg",
+          "webp": "images/generated/closer-3-leaves-1268.webp"
+        }
+      ]
+    },
+    "closer-4-stars.jpg": {
+      "width": 1162,
+      "height": 1162,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/closer-4-stars-480.jpg",
+          "webp": "images/generated/closer-4-stars-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/closer-4-stars-768.jpg",
+          "webp": "images/generated/closer-4-stars-768.webp"
+        },
+        {
+          "width": 1162,
+          "jpeg": "images/generated/closer-4-stars-1162.jpg",
+          "webp": "images/generated/closer-4-stars-1162.webp"
+        }
+      ]
+    },
+    "closer-5-edge.jpg": {
+      "width": 1114,
+      "height": 1114,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/closer-5-edge-480.jpg",
+          "webp": "images/generated/closer-5-edge-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/closer-5-edge-768.jpg",
+          "webp": "images/generated/closer-5-edge-768.webp"
+        },
+        {
+          "width": 1114,
+          "jpeg": "images/generated/closer-5-edge-1114.jpg",
+          "webp": "images/generated/closer-5-edge-1114.webp"
+        }
+      ]
+    },
+    "crack-detail.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/crack-detail-480.jpg",
+          "webp": "images/generated/crack-detail-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/crack-detail-768.jpg",
+          "webp": "images/generated/crack-detail-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/crack-detail-1200.jpg",
+          "webp": "images/generated/crack-detail-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/crack-detail-1440.jpg",
+          "webp": "images/generated/crack-detail-1440.webp"
+        }
+      ]
+    },
+    "crack.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/crack-480.jpg",
+          "webp": "images/generated/crack-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/crack-768.jpg",
+          "webp": "images/generated/crack-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/crack-1200.jpg",
+          "webp": "images/generated/crack-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/crack-1440.jpg",
+          "webp": "images/generated/crack-1440.webp"
+        }
+      ]
+    },
+    "disc.jpg": {
+      "width": 1092,
+      "height": 1092,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/disc-480.jpg",
+          "webp": "images/generated/disc-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/disc-768.jpg",
+          "webp": "images/generated/disc-768.webp"
+        },
+        {
+          "width": 1092,
+          "jpeg": "images/generated/disc-1092.jpg",
+          "webp": "images/generated/disc-1092.webp"
+        }
+      ]
+    },
+    "forest-detail.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/forest-detail-480.jpg",
+          "webp": "images/generated/forest-detail-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/forest-detail-768.jpg",
+          "webp": "images/generated/forest-detail-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/forest-detail-1200.jpg",
+          "webp": "images/generated/forest-detail-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/forest-detail-1440.jpg",
+          "webp": "images/generated/forest-detail-1440.webp"
+        }
+      ]
+    },
+    "forest.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/forest-480.jpg",
+          "webp": "images/generated/forest-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/forest-768.jpg",
+          "webp": "images/generated/forest-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/forest-1200.jpg",
+          "webp": "images/generated/forest-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/forest-1440.jpg",
+          "webp": "images/generated/forest-1440.webp"
+        }
+      ]
+    },
+    "fragment.jpg": {
+      "width": 1440,
+      "height": 1800,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/fragment-480.jpg",
+          "webp": "images/generated/fragment-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/fragment-768.jpg",
+          "webp": "images/generated/fragment-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/fragment-1200.jpg",
+          "webp": "images/generated/fragment-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/fragment-1440.jpg",
+          "webp": "images/generated/fragment-1440.webp"
+        }
+      ]
+    },
+    "garden-full.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/garden-full-480.jpg",
+          "webp": "images/generated/garden-full-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/garden-full-768.jpg",
+          "webp": "images/generated/garden-full-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/garden-full-1200.jpg",
+          "webp": "images/generated/garden-full-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/garden-full-1440.jpg",
+          "webp": "images/generated/garden-full-1440.webp"
+        }
+      ]
+    },
+    "garden.jpg": {
+      "width": 1080,
+      "height": 1080,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/garden-480.jpg",
+          "webp": "images/generated/garden-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/garden-768.jpg",
+          "webp": "images/generated/garden-768.webp"
+        },
+        {
+          "width": 1080,
+          "jpeg": "images/generated/garden-1080.jpg",
+          "webp": "images/generated/garden-1080.webp"
+        }
+      ]
+    },
+    "house-03.jpg": {
+      "width": 1080,
+      "height": 1350,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/house-03-480.jpg",
+          "webp": "images/generated/house-03-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/house-03-768.jpg",
+          "webp": "images/generated/house-03-768.webp"
+        },
+        {
+          "width": 1080,
+          "jpeg": "images/generated/house-03-1080.jpg",
+          "webp": "images/generated/house-03-1080.webp"
+        }
+      ]
+    },
+    "house-04.jpg": {
+      "width": 1080,
+      "height": 1202,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/house-04-480.jpg",
+          "webp": "images/generated/house-04-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/house-04-768.jpg",
+          "webp": "images/generated/house-04-768.webp"
+        },
+        {
+          "width": 1080,
+          "jpeg": "images/generated/house-04-1080.jpg",
+          "webp": "images/generated/house-04-1080.webp"
+        }
+      ]
+    },
+    "house-05.jpg": {
+      "width": 1080,
+      "height": 886,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/house-05-480.jpg",
+          "webp": "images/generated/house-05-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/house-05-768.jpg",
+          "webp": "images/generated/house-05-768.webp"
+        },
+        {
+          "width": 1080,
+          "jpeg": "images/generated/house-05-1080.jpg",
+          "webp": "images/generated/house-05-1080.webp"
+        }
+      ]
+    },
+    "house-06.jpg": {
+      "width": 1080,
+      "height": 706,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/house-06-480.jpg",
+          "webp": "images/generated/house-06-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/house-06-768.jpg",
+          "webp": "images/generated/house-06-768.webp"
+        },
+        {
+          "width": 1080,
+          "jpeg": "images/generated/house-06-1080.jpg",
+          "webp": "images/generated/house-06-1080.webp"
+        }
+      ]
+    },
+    "house-07.jpg": {
+      "width": 925,
+      "height": 1133,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/house-07-480.jpg",
+          "webp": "images/generated/house-07-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/house-07-768.jpg",
+          "webp": "images/generated/house-07-768.webp"
+        },
+        {
+          "width": 925,
+          "jpeg": "images/generated/house-07-925.jpg",
+          "webp": "images/generated/house-07-925.webp"
+        }
+      ]
+    },
+    "house-08.jpg": {
+      "width": 973,
+      "height": 1191,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/house-08-480.jpg",
+          "webp": "images/generated/house-08-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/house-08-768.jpg",
+          "webp": "images/generated/house-08-768.webp"
+        },
+        {
+          "width": 973,
+          "jpeg": "images/generated/house-08-973.jpg",
+          "webp": "images/generated/house-08-973.webp"
+        }
+      ]
+    },
+    "house-09.jpg": {
+      "width": 1080,
+      "height": 1246,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/house-09-480.jpg",
+          "webp": "images/generated/house-09-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/house-09-768.jpg",
+          "webp": "images/generated/house-09-768.webp"
+        },
+        {
+          "width": 1080,
+          "jpeg": "images/generated/house-09-1080.jpg",
+          "webp": "images/generated/house-09-1080.webp"
+        }
+      ]
+    },
+    "house-10.jpg": {
+      "width": 1080,
+      "height": 1080,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/house-10-480.jpg",
+          "webp": "images/generated/house-10-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/house-10-768.jpg",
+          "webp": "images/generated/house-10-768.webp"
+        },
+        {
+          "width": 1080,
+          "jpeg": "images/generated/house-10-1080.jpg",
+          "webp": "images/generated/house-10-1080.webp"
+        }
+      ]
+    },
+    "house-11.jpg": {
+      "width": 1440,
+      "height": 1800,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/house-11-480.jpg",
+          "webp": "images/generated/house-11-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/house-11-768.jpg",
+          "webp": "images/generated/house-11-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/house-11-1200.jpg",
+          "webp": "images/generated/house-11-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/house-11-1440.jpg",
+          "webp": "images/generated/house-11-1440.webp"
+        }
+      ]
+    },
+    "house-12.jpg": {
+      "width": 1079,
+      "height": 1350,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/house-12-480.jpg",
+          "webp": "images/generated/house-12-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/house-12-768.jpg",
+          "webp": "images/generated/house-12-768.webp"
+        },
+        {
+          "width": 1079,
+          "jpeg": "images/generated/house-12-1079.jpg",
+          "webp": "images/generated/house-12-1079.webp"
+        }
+      ]
+    },
+    "house-13.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/house-13-480.jpg",
+          "webp": "images/generated/house-13-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/house-13-768.jpg",
+          "webp": "images/generated/house-13-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/house-13-1200.jpg",
+          "webp": "images/generated/house-13-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/house-13-1440.jpg",
+          "webp": "images/generated/house-13-1440.webp"
+        }
+      ]
+    },
+    "house-14.jpg": {
+      "width": 1440,
+      "height": 1723,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/house-14-480.jpg",
+          "webp": "images/generated/house-14-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/house-14-768.jpg",
+          "webp": "images/generated/house-14-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/house-14-1200.jpg",
+          "webp": "images/generated/house-14-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/house-14-1440.jpg",
+          "webp": "images/generated/house-14-1440.webp"
+        }
+      ]
+    },
+    "house-15.jpg": {
+      "width": 1080,
+      "height": 841,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/house-15-480.jpg",
+          "webp": "images/generated/house-15-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/house-15-768.jpg",
+          "webp": "images/generated/house-15-768.webp"
+        },
+        {
+          "width": 1080,
+          "jpeg": "images/generated/house-15-1080.jpg",
+          "webp": "images/generated/house-15-1080.webp"
+        }
+      ]
+    },
+    "house-2.jpg": {
+      "width": 1080,
+      "height": 1251,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/house-2-480.jpg",
+          "webp": "images/generated/house-2-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/house-2-768.jpg",
+          "webp": "images/generated/house-2-768.webp"
+        },
+        {
+          "width": 1080,
+          "jpeg": "images/generated/house-2-1080.jpg",
+          "webp": "images/generated/house-2-1080.webp"
+        }
+      ]
+    },
+    "house.jpg": {
+      "width": 1080,
+      "height": 1099,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/house-480.jpg",
+          "webp": "images/generated/house-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/house-768.jpg",
+          "webp": "images/generated/house-768.webp"
+        },
+        {
+          "width": 1080,
+          "jpeg": "images/generated/house-1080.jpg",
+          "webp": "images/generated/house-1080.webp"
+        }
+      ]
+    },
+    "moss-fullbleed.jpg": {
+      "width": 1240,
+      "height": 620,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/moss-fullbleed-480.jpg",
+          "webp": "images/generated/moss-fullbleed-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/moss-fullbleed-768.jpg",
+          "webp": "images/generated/moss-fullbleed-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/moss-fullbleed-1200.jpg",
+          "webp": "images/generated/moss-fullbleed-1200.webp"
+        },
+        {
+          "width": 1240,
+          "jpeg": "images/generated/moss-fullbleed-1240.jpg",
+          "webp": "images/generated/moss-fullbleed-1240.webp"
+        }
+      ]
+    },
+    "moss-paper-01-moss.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/moss-paper-01-moss-480.jpg",
+          "webp": "images/generated/moss-paper-01-moss-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/moss-paper-01-moss-768.jpg",
+          "webp": "images/generated/moss-paper-01-moss-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/moss-paper-01-moss-1200.jpg",
+          "webp": "images/generated/moss-paper-01-moss-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/moss-paper-01-moss-1440.jpg",
+          "webp": "images/generated/moss-paper-01-moss-1440.webp"
+        }
+      ]
+    },
+    "moss-paper-02-moss-in-bag.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/moss-paper-02-moss-in-bag-480.jpg",
+          "webp": "images/generated/moss-paper-02-moss-in-bag-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/moss-paper-02-moss-in-bag-768.jpg",
+          "webp": "images/generated/moss-paper-02-moss-in-bag-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/moss-paper-02-moss-in-bag-1200.jpg",
+          "webp": "images/generated/moss-paper-02-moss-in-bag-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/moss-paper-02-moss-in-bag-1440.jpg",
+          "webp": "images/generated/moss-paper-02-moss-in-bag-1440.webp"
+        }
+      ]
+    },
+    "moss-paper-03-soaking.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/moss-paper-03-soaking-480.jpg",
+          "webp": "images/generated/moss-paper-03-soaking-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/moss-paper-03-soaking-768.jpg",
+          "webp": "images/generated/moss-paper-03-soaking-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/moss-paper-03-soaking-1200.jpg",
+          "webp": "images/generated/moss-paper-03-soaking-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/moss-paper-03-soaking-1440.jpg",
+          "webp": "images/generated/moss-paper-03-soaking-1440.webp"
+        }
+      ]
+    },
+    "moss-paper-04-pulp.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/moss-paper-04-pulp-480.jpg",
+          "webp": "images/generated/moss-paper-04-pulp-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/moss-paper-04-pulp-768.jpg",
+          "webp": "images/generated/moss-paper-04-pulp-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/moss-paper-04-pulp-1200.jpg",
+          "webp": "images/generated/moss-paper-04-pulp-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/moss-paper-04-pulp-1440.jpg",
+          "webp": "images/generated/moss-paper-04-pulp-1440.webp"
+        }
+      ]
+    },
+    "moss-paper-05-wet-sheet.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/moss-paper-05-wet-sheet-480.jpg",
+          "webp": "images/generated/moss-paper-05-wet-sheet-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/moss-paper-05-wet-sheet-768.jpg",
+          "webp": "images/generated/moss-paper-05-wet-sheet-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/moss-paper-05-wet-sheet-1200.jpg",
+          "webp": "images/generated/moss-paper-05-wet-sheet-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/moss-paper-05-wet-sheet-1440.jpg",
+          "webp": "images/generated/moss-paper-05-wet-sheet-1440.webp"
+        }
+      ]
+    },
+    "moss-paper-06-round-sheet.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/moss-paper-06-round-sheet-480.jpg",
+          "webp": "images/generated/moss-paper-06-round-sheet-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/moss-paper-06-round-sheet-768.jpg",
+          "webp": "images/generated/moss-paper-06-round-sheet-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/moss-paper-06-round-sheet-1200.jpg",
+          "webp": "images/generated/moss-paper-06-round-sheet-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/moss-paper-06-round-sheet-1440.jpg",
+          "webp": "images/generated/moss-paper-06-round-sheet-1440.webp"
+        }
+      ]
+    },
+    "moss-paper-07-dried-sheet.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/moss-paper-07-dried-sheet-480.jpg",
+          "webp": "images/generated/moss-paper-07-dried-sheet-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/moss-paper-07-dried-sheet-768.jpg",
+          "webp": "images/generated/moss-paper-07-dried-sheet-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/moss-paper-07-dried-sheet-1200.jpg",
+          "webp": "images/generated/moss-paper-07-dried-sheet-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/moss-paper-07-dried-sheet-1440.jpg",
+          "webp": "images/generated/moss-paper-07-dried-sheet-1440.webp"
+        }
+      ]
+    },
+    "moss-paper-08-drawing-detail.jpg": {
+      "width": 621,
+      "height": 620,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/moss-paper-08-drawing-detail-480.jpg",
+          "webp": "images/generated/moss-paper-08-drawing-detail-480.webp"
+        },
+        {
+          "width": 621,
+          "jpeg": "images/generated/moss-paper-08-drawing-detail-621.jpg",
+          "webp": "images/generated/moss-paper-08-drawing-detail-621.webp"
+        }
+      ]
+    },
+    "moss-paper-09-drawing-raking-light.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/moss-paper-09-drawing-raking-light-480.jpg",
+          "webp": "images/generated/moss-paper-09-drawing-raking-light-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/moss-paper-09-drawing-raking-light-768.jpg",
+          "webp": "images/generated/moss-paper-09-drawing-raking-light-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/moss-paper-09-drawing-raking-light-1200.jpg",
+          "webp": "images/generated/moss-paper-09-drawing-raking-light-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/moss-paper-09-drawing-raking-light-1440.jpg",
+          "webp": "images/generated/moss-paper-09-drawing-raking-light-1440.webp"
+        }
+      ]
+    },
+    "moss-paper-10-raking-light-close.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/moss-paper-10-raking-light-close-480.jpg",
+          "webp": "images/generated/moss-paper-10-raking-light-close-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/moss-paper-10-raking-light-close-768.jpg",
+          "webp": "images/generated/moss-paper-10-raking-light-close-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/moss-paper-10-raking-light-close-1200.jpg",
+          "webp": "images/generated/moss-paper-10-raking-light-close-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/moss-paper-10-raking-light-close-1440.jpg",
+          "webp": "images/generated/moss-paper-10-raking-light-close-1440.webp"
+        }
+      ]
+    },
+    "moss-radial-detail.jpg": {
+      "width": 1028,
+      "height": 1028,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/moss-radial-detail-480.jpg",
+          "webp": "images/generated/moss-radial-detail-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/moss-radial-detail-768.jpg",
+          "webp": "images/generated/moss-radial-detail-768.webp"
+        },
+        {
+          "width": 1028,
+          "jpeg": "images/generated/moss-radial-detail-1028.jpg",
+          "webp": "images/generated/moss-radial-detail-1028.webp"
+        }
+      ]
+    },
+    "moss-radial.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/moss-radial-480.jpg",
+          "webp": "images/generated/moss-radial-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/moss-radial-768.jpg",
+          "webp": "images/generated/moss-radial-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/moss-radial-1200.jpg",
+          "webp": "images/generated/moss-radial-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/moss-radial-1440.jpg",
+          "webp": "images/generated/moss-radial-1440.webp"
+        }
+      ]
+    },
+    "mounds-leaf.jpg": {
+      "width": 1062,
+      "height": 1062,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/mounds-leaf-480.jpg",
+          "webp": "images/generated/mounds-leaf-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/mounds-leaf-768.jpg",
+          "webp": "images/generated/mounds-leaf-768.webp"
+        },
+        {
+          "width": 1062,
+          "jpeg": "images/generated/mounds-leaf-1062.jpg",
+          "webp": "images/generated/mounds-leaf-1062.webp"
+        }
+      ]
+    },
+    "mounds.jpg": {
+      "width": 721,
+      "height": 721,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/mounds-480.jpg",
+          "webp": "images/generated/mounds-480.webp"
+        },
+        {
+          "width": 721,
+          "jpeg": "images/generated/mounds-721.jpg",
+          "webp": "images/generated/mounds-721.webp"
+        }
+      ]
+    },
+    "og.jpg": {
+      "width": 1200,
+      "height": 630,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/og-480.jpg",
+          "webp": "images/generated/og-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/og-768.jpg",
+          "webp": "images/generated/og-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/og-1200.jpg",
+          "webp": "images/generated/og-1200.webp"
+        }
+      ]
+    },
+    "p-book-grass.jpg": {
+      "width": 1439,
+      "height": 1799,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/p-book-grass-480.jpg",
+          "webp": "images/generated/p-book-grass-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/p-book-grass-768.jpg",
+          "webp": "images/generated/p-book-grass-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/p-book-grass-1200.jpg",
+          "webp": "images/generated/p-book-grass-1200.webp"
+        },
+        {
+          "width": 1439,
+          "jpeg": "images/generated/p-book-grass-1439.jpg",
+          "webp": "images/generated/p-book-grass-1439.webp"
+        }
+      ]
+    },
+    "p-box.jpg": {
+      "width": 1440,
+      "height": 1789,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/p-box-480.jpg",
+          "webp": "images/generated/p-box-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/p-box-768.jpg",
+          "webp": "images/generated/p-box-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/p-box-1200.jpg",
+          "webp": "images/generated/p-box-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/p-box-1440.jpg",
+          "webp": "images/generated/p-box-1440.webp"
+        }
+      ]
+    },
+    "p-bricks-card.jpg": {
+      "width": 1440,
+      "height": 1800,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/p-bricks-card-480.jpg",
+          "webp": "images/generated/p-bricks-card-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/p-bricks-card-768.jpg",
+          "webp": "images/generated/p-bricks-card-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/p-bricks-card-1200.jpg",
+          "webp": "images/generated/p-bricks-card-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/p-bricks-card-1440.jpg",
+          "webp": "images/generated/p-bricks-card-1440.webp"
+        }
+      ]
+    },
+    "p-bricks-print.jpg": {
+      "width": 1440,
+      "height": 1801,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/p-bricks-print-480.jpg",
+          "webp": "images/generated/p-bricks-print-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/p-bricks-print-768.jpg",
+          "webp": "images/generated/p-bricks-print-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/p-bricks-print-1200.jpg",
+          "webp": "images/generated/p-bricks-print-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/p-bricks-print-1440.jpg",
+          "webp": "images/generated/p-bricks-print-1440.webp"
+        }
+      ]
+    },
+    "p-floor-1.jpg": {
+      "width": 1080,
+      "height": 1080,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/p-floor-1-480.jpg",
+          "webp": "images/generated/p-floor-1-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/p-floor-1-768.jpg",
+          "webp": "images/generated/p-floor-1-768.webp"
+        },
+        {
+          "width": 1080,
+          "jpeg": "images/generated/p-floor-1-1080.jpg",
+          "webp": "images/generated/p-floor-1-1080.webp"
+        }
+      ]
+    },
+    "p-floor-2-room.jpg": {
+      "width": 970,
+      "height": 940,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/p-floor-2-room-480.jpg",
+          "webp": "images/generated/p-floor-2-room-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/p-floor-2-room-768.jpg",
+          "webp": "images/generated/p-floor-2-room-768.webp"
+        },
+        {
+          "width": 970,
+          "jpeg": "images/generated/p-floor-2-room-970.jpg",
+          "webp": "images/generated/p-floor-2-room-970.webp"
+        }
+      ]
+    },
+    "p-floor-2.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/p-floor-2-480.jpg",
+          "webp": "images/generated/p-floor-2-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/p-floor-2-768.jpg",
+          "webp": "images/generated/p-floor-2-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/p-floor-2-1200.jpg",
+          "webp": "images/generated/p-floor-2-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/p-floor-2-1440.jpg",
+          "webp": "images/generated/p-floor-2-1440.webp"
+        }
+      ]
+    },
+    "p-floor-3.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/p-floor-3-480.jpg",
+          "webp": "images/generated/p-floor-3-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/p-floor-3-768.jpg",
+          "webp": "images/generated/p-floor-3-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/p-floor-3-1200.jpg",
+          "webp": "images/generated/p-floor-3-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/p-floor-3-1440.jpg",
+          "webp": "images/generated/p-floor-3-1440.webp"
+        }
+      ]
+    },
+    "p-kaal-1.jpg": {
+      "width": 1440,
+      "height": 1918,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/p-kaal-1-480.jpg",
+          "webp": "images/generated/p-kaal-1-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/p-kaal-1-768.jpg",
+          "webp": "images/generated/p-kaal-1-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/p-kaal-1-1200.jpg",
+          "webp": "images/generated/p-kaal-1-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/p-kaal-1-1440.jpg",
+          "webp": "images/generated/p-kaal-1-1440.webp"
+        }
+      ]
+    },
+    "p-paper-1.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/p-paper-1-480.jpg",
+          "webp": "images/generated/p-paper-1-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/p-paper-1-768.jpg",
+          "webp": "images/generated/p-paper-1-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/p-paper-1-1200.jpg",
+          "webp": "images/generated/p-paper-1-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/p-paper-1-1440.jpg",
+          "webp": "images/generated/p-paper-1-1440.webp"
+        }
+      ]
+    },
+    "p-paper-2.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/p-paper-2-480.jpg",
+          "webp": "images/generated/p-paper-2-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/p-paper-2-768.jpg",
+          "webp": "images/generated/p-paper-2-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/p-paper-2-1200.jpg",
+          "webp": "images/generated/p-paper-2-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/p-paper-2-1440.jpg",
+          "webp": "images/generated/p-paper-2-1440.webp"
+        }
+      ]
+    },
+    "p-watch.jpg": {
+      "width": 1440,
+      "height": 1789,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/p-watch-480.jpg",
+          "webp": "images/generated/p-watch-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/p-watch-768.jpg",
+          "webp": "images/generated/p-watch-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/p-watch-1200.jpg",
+          "webp": "images/generated/p-watch-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/p-watch-1440.jpg",
+          "webp": "images/generated/p-watch-1440.webp"
+        }
+      ]
+    },
+    "pair-drawing.jpg": {
+      "width": 1093,
+      "height": 1092,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/pair-drawing-480.jpg",
+          "webp": "images/generated/pair-drawing-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/pair-drawing-768.jpg",
+          "webp": "images/generated/pair-drawing-768.webp"
+        },
+        {
+          "width": 1093,
+          "jpeg": "images/generated/pair-drawing-1093.jpg",
+          "webp": "images/generated/pair-drawing-1093.webp"
+        }
+      ]
+    },
+    "pair-photo.jpg": {
+      "width": 1093,
+      "height": 1092,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/pair-photo-480.jpg",
+          "webp": "images/generated/pair-photo-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/pair-photo-768.jpg",
+          "webp": "images/generated/pair-photo-768.webp"
+        },
+        {
+          "width": 1093,
+          "jpeg": "images/generated/pair-photo-1093.jpg",
+          "webp": "images/generated/pair-photo-1093.webp"
+        }
+      ]
+    },
+    "patch-crack-i.jpg": {
+      "width": 711,
+      "height": 420,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/patch-crack-i-480.jpg",
+          "webp": "images/generated/patch-crack-i-480.webp"
+        },
+        {
+          "width": 711,
+          "jpeg": "images/generated/patch-crack-i-711.jpg",
+          "webp": "images/generated/patch-crack-i-711.webp"
+        }
+      ]
+    },
+    "process-box-field-notes.jpg": {
+      "width": 963,
+      "height": 586,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/process-box-field-notes-480.jpg",
+          "webp": "images/generated/process-box-field-notes-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/process-box-field-notes-768.jpg",
+          "webp": "images/generated/process-box-field-notes-768.webp"
+        },
+        {
+          "width": 963,
+          "jpeg": "images/generated/process-box-field-notes-963.jpg",
+          "webp": "images/generated/process-box-field-notes-963.webp"
+        }
+      ]
+    },
+    "process-box-hands.jpg": {
+      "width": 1440,
+      "height": 1789,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/process-box-hands-480.jpg",
+          "webp": "images/generated/process-box-hands-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/process-box-hands-768.jpg",
+          "webp": "images/generated/process-box-hands-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/process-box-hands-1200.jpg",
+          "webp": "images/generated/process-box-hands-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/process-box-hands-1440.jpg",
+          "webp": "images/generated/process-box-hands-1440.webp"
+        }
+      ]
+    },
+    "process-floor-among-blocks.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/process-floor-among-blocks-480.jpg",
+          "webp": "images/generated/process-floor-among-blocks-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/process-floor-among-blocks-768.jpg",
+          "webp": "images/generated/process-floor-among-blocks-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/process-floor-among-blocks-1200.jpg",
+          "webp": "images/generated/process-floor-among-blocks-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/process-floor-among-blocks-1440.jpg",
+          "webp": "images/generated/process-floor-among-blocks-1440.webp"
+        }
+      ]
+    },
+    "process-floor-block.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/process-floor-block-480.jpg",
+          "webp": "images/generated/process-floor-block-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/process-floor-block-768.jpg",
+          "webp": "images/generated/process-floor-block-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/process-floor-block-1200.jpg",
+          "webp": "images/generated/process-floor-block-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/process-floor-block-1440.jpg",
+          "webp": "images/generated/process-floor-block-1440.webp"
+        }
+      ]
+    },
+    "process-floor-encounter.jpg": {
+      "width": 1114,
+      "height": 851,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/process-floor-encounter-480.jpg",
+          "webp": "images/generated/process-floor-encounter-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/process-floor-encounter-768.jpg",
+          "webp": "images/generated/process-floor-encounter-768.webp"
+        },
+        {
+          "width": 1114,
+          "jpeg": "images/generated/process-floor-encounter-1114.jpg",
+          "webp": "images/generated/process-floor-encounter-1114.webp"
+        }
+      ]
+    },
+    "process-photo-acorns.jpg": {
+      "width": 1440,
+      "height": 1439,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/process-photo-acorns-480.jpg",
+          "webp": "images/generated/process-photo-acorns-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/process-photo-acorns-768.jpg",
+          "webp": "images/generated/process-photo-acorns-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/process-photo-acorns-1200.jpg",
+          "webp": "images/generated/process-photo-acorns-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/process-photo-acorns-1440.jpg",
+          "webp": "images/generated/process-photo-acorns-1440.webp"
+        }
+      ]
+    },
+    "process-photo-crack.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/process-photo-crack-480.jpg",
+          "webp": "images/generated/process-photo-crack-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/process-photo-crack-768.jpg",
+          "webp": "images/generated/process-photo-crack-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/process-photo-crack-1200.jpg",
+          "webp": "images/generated/process-photo-crack-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/process-photo-crack-1440.jpg",
+          "webp": "images/generated/process-photo-crack-1440.webp"
+        }
+      ]
+    },
+    "process-photo-kerb.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/process-photo-kerb-480.jpg",
+          "webp": "images/generated/process-photo-kerb-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/process-photo-kerb-768.jpg",
+          "webp": "images/generated/process-photo-kerb-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/process-photo-kerb-1200.jpg",
+          "webp": "images/generated/process-photo-kerb-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/process-photo-kerb-1440.jpg",
+          "webp": "images/generated/process-photo-kerb-1440.webp"
+        }
+      ]
+    },
+    "process-photo-trainers.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/process-photo-trainers-480.jpg",
+          "webp": "images/generated/process-photo-trainers-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/process-photo-trainers-768.jpg",
+          "webp": "images/generated/process-photo-trainers-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/process-photo-trainers-1200.jpg",
+          "webp": "images/generated/process-photo-trainers-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/process-photo-trainers-1440.jpg",
+          "webp": "images/generated/process-photo-trainers-1440.webp"
+        }
+      ]
+    },
+    "process-read-book.jpg": {
+      "width": 1087,
+      "height": 1087,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/process-read-book-480.jpg",
+          "webp": "images/generated/process-read-book-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/process-read-book-768.jpg",
+          "webp": "images/generated/process-read-book-768.webp"
+        },
+        {
+          "width": 1087,
+          "jpeg": "images/generated/process-read-book-1087.jpg",
+          "webp": "images/generated/process-read-book-1087.webp"
+        }
+      ]
+    },
+    "process-reel-01-sketch.jpg": {
+      "width": 720,
+      "height": 1280,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/process-reel-01-sketch-480.jpg",
+          "webp": "images/generated/process-reel-01-sketch-480.webp"
+        },
+        {
+          "width": 720,
+          "jpeg": "images/generated/process-reel-01-sketch-720.jpg",
+          "webp": "images/generated/process-reel-01-sketch-720.webp"
+        }
+      ]
+    },
+    "process-reel-02-structure.jpg": {
+      "width": 720,
+      "height": 1280,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/process-reel-02-structure-480.jpg",
+          "webp": "images/generated/process-reel-02-structure-480.webp"
+        },
+        {
+          "width": 720,
+          "jpeg": "images/generated/process-reel-02-structure-720.jpg",
+          "webp": "images/generated/process-reel-02-structure-720.webp"
+        }
+      ]
+    },
+    "process-reel-03-composition.jpg": {
+      "width": 720,
+      "height": 1280,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/process-reel-03-composition-480.jpg",
+          "webp": "images/generated/process-reel-03-composition-480.webp"
+        },
+        {
+          "width": 720,
+          "jpeg": "images/generated/process-reel-03-composition-720.jpg",
+          "webp": "images/generated/process-reel-03-composition-720.webp"
+        }
+      ]
+    },
+    "process-reel-04-leaves.jpg": {
+      "width": 720,
+      "height": 1280,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/process-reel-04-leaves-480.jpg",
+          "webp": "images/generated/process-reel-04-leaves-480.webp"
+        },
+        {
+          "width": 720,
+          "jpeg": "images/generated/process-reel-04-leaves-720.jpg",
+          "webp": "images/generated/process-reel-04-leaves-720.webp"
+        }
+      ]
+    },
+    "process-reel-05-experiment.jpg": {
+      "width": 720,
+      "height": 1280,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/process-reel-05-experiment-480.jpg",
+          "webp": "images/generated/process-reel-05-experiment-480.webp"
+        },
+        {
+          "width": 720,
+          "jpeg": "images/generated/process-reel-05-experiment-720.jpg",
+          "webp": "images/generated/process-reel-05-experiment-720.webp"
+        }
+      ]
+    },
+    "process-reel-06-just-draw.jpg": {
+      "width": 720,
+      "height": 1280,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/process-reel-06-just-draw-480.jpg",
+          "webp": "images/generated/process-reel-06-just-draw-480.webp"
+        },
+        {
+          "width": 720,
+          "jpeg": "images/generated/process-reel-06-just-draw-720.jpg",
+          "webp": "images/generated/process-reel-06-just-draw-720.webp"
+        }
+      ]
+    },
+    "process-reel-07-think.jpg": {
+      "width": 720,
+      "height": 1280,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/process-reel-07-think-480.jpg",
+          "webp": "images/generated/process-reel-07-think-480.webp"
+        },
+        {
+          "width": 720,
+          "jpeg": "images/generated/process-reel-07-think-720.jpg",
+          "webp": "images/generated/process-reel-07-think-720.webp"
+        }
+      ]
+    },
+    "process-reel-08-textures.jpg": {
+      "width": 720,
+      "height": 1280,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/process-reel-08-textures-480.jpg",
+          "webp": "images/generated/process-reel-08-textures-480.webp"
+        },
+        {
+          "width": 720,
+          "jpeg": "images/generated/process-reel-08-textures-720.jpg",
+          "webp": "images/generated/process-reel-08-textures-720.webp"
+        }
+      ]
+    },
+    "process-reel-09-no-structure.jpg": {
+      "width": 720,
+      "height": 1280,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/process-reel-09-no-structure-480.jpg",
+          "webp": "images/generated/process-reel-09-no-structure-480.webp"
+        },
+        {
+          "width": 720,
+          "jpeg": "images/generated/process-reel-09-no-structure-720.jpg",
+          "webp": "images/generated/process-reel-09-no-structure-720.webp"
+        }
+      ]
+    },
+    "process-reel-10-and-leaves-again.jpg": {
+      "width": 720,
+      "height": 1280,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/process-reel-10-and-leaves-again-480.jpg",
+          "webp": "images/generated/process-reel-10-and-leaves-again-480.webp"
+        },
+        {
+          "width": 720,
+          "jpeg": "images/generated/process-reel-10-and-leaves-again-720.jpg",
+          "webp": "images/generated/process-reel-10-and-leaves-again-720.webp"
+        }
+      ]
+    },
+    "process-reel-11-finished.jpg": {
+      "width": 720,
+      "height": 1280,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/process-reel-11-finished-480.jpg",
+          "webp": "images/generated/process-reel-11-finished-480.webp"
+        },
+        {
+          "width": 720,
+          "jpeg": "images/generated/process-reel-11-finished-720.jpg",
+          "webp": "images/generated/process-reel-11-finished-720.webp"
+        }
+      ]
+    },
+    "process-reel-2023-poster.jpg": {
+      "width": 720,
+      "height": 1280,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/process-reel-2023-poster-480.jpg",
+          "webp": "images/generated/process-reel-2023-poster-480.webp"
+        },
+        {
+          "width": 720,
+          "jpeg": "images/generated/process-reel-2023-poster-720.jpg",
+          "webp": "images/generated/process-reel-2023-poster-720.webp"
+        }
+      ]
+    },
+    "process-site-bark.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/process-site-bark-480.jpg",
+          "webp": "images/generated/process-site-bark-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/process-site-bark-768.jpg",
+          "webp": "images/generated/process-site-bark-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/process-site-bark-1200.jpg",
+          "webp": "images/generated/process-site-bark-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/process-site-bark-1440.jpg",
+          "webp": "images/generated/process-site-bark-1440.webp"
+        }
+      ]
+    },
+    "process-site-brick-top.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/process-site-brick-top-480.jpg",
+          "webp": "images/generated/process-site-brick-top-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/process-site-brick-top-768.jpg",
+          "webp": "images/generated/process-site-brick-top-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/process-site-brick-top-1200.jpg",
+          "webp": "images/generated/process-site-brick-top-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/process-site-brick-top-1440.jpg",
+          "webp": "images/generated/process-site-brick-top-1440.webp"
+        }
+      ]
+    },
+    "research-wall-moss-paper.jpg": {
+      "width": 1170,
+      "height": 780,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/research-wall-moss-paper-480.jpg",
+          "webp": "images/generated/research-wall-moss-paper-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/research-wall-moss-paper-768.jpg",
+          "webp": "images/generated/research-wall-moss-paper-768.webp"
+        },
+        {
+          "width": 1170,
+          "jpeg": "images/generated/research-wall-moss-paper-1170.jpg",
+          "webp": "images/generated/research-wall-moss-paper-1170.webp"
+        }
+      ]
+    },
+    "research-wall.jpg": {
+      "width": 1440,
+      "height": 1431,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/research-wall-480.jpg",
+          "webp": "images/generated/research-wall-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/research-wall-768.jpg",
+          "webp": "images/generated/research-wall-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/research-wall-1200.jpg",
+          "webp": "images/generated/research-wall-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/research-wall-1440.jpg",
+          "webp": "images/generated/research-wall-1440.webp"
+        }
+      ]
+    },
+    "seen-bark-clean.jpg": {
+      "width": 1050,
+      "height": 1439,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/seen-bark-clean-480.jpg",
+          "webp": "images/generated/seen-bark-clean-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/seen-bark-clean-768.jpg",
+          "webp": "images/generated/seen-bark-clean-768.webp"
+        },
+        {
+          "width": 1050,
+          "jpeg": "images/generated/seen-bark-clean-1050.jpg",
+          "webp": "images/generated/seen-bark-clean-1050.webp"
+        }
+      ]
+    },
+    "seen-bark.jpg": {
+      "width": 1440,
+      "height": 1439,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/seen-bark-480.jpg",
+          "webp": "images/generated/seen-bark-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/seen-bark-768.jpg",
+          "webp": "images/generated/seen-bark-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/seen-bark-1200.jpg",
+          "webp": "images/generated/seen-bark-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/seen-bark-1440.jpg",
+          "webp": "images/generated/seen-bark-1440.webp"
+        }
+      ]
+    },
+    "seen-brick-moss.jpg": {
+      "width": 1066,
+      "height": 1066,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/seen-brick-moss-480.jpg",
+          "webp": "images/generated/seen-brick-moss-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/seen-brick-moss-768.jpg",
+          "webp": "images/generated/seen-brick-moss-768.webp"
+        },
+        {
+          "width": 1066,
+          "jpeg": "images/generated/seen-brick-moss-1066.jpg",
+          "webp": "images/generated/seen-brick-moss-1066.webp"
+        }
+      ]
+    },
+    "seen-moss-clean.jpg": {
+      "width": 1440,
+      "height": 1080,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/seen-moss-clean-480.jpg",
+          "webp": "images/generated/seen-moss-clean-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/seen-moss-clean-768.jpg",
+          "webp": "images/generated/seen-moss-clean-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/seen-moss-clean-1200.jpg",
+          "webp": "images/generated/seen-moss-clean-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/seen-moss-clean-1440.jpg",
+          "webp": "images/generated/seen-moss-clean-1440.webp"
+        }
+      ]
+    },
+    "seen-moss.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/seen-moss-480.jpg",
+          "webp": "images/generated/seen-moss-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/seen-moss-768.jpg",
+          "webp": "images/generated/seen-moss-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/seen-moss-1200.jpg",
+          "webp": "images/generated/seen-moss-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/seen-moss-1440.jpg",
+          "webp": "images/generated/seen-moss-1440.webp"
+        }
+      ]
+    },
+    "seen-pavement.jpg": {
+      "width": 1440,
+      "height": 1440,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/seen-pavement-480.jpg",
+          "webp": "images/generated/seen-pavement-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/seen-pavement-768.jpg",
+          "webp": "images/generated/seen-pavement-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/seen-pavement-1200.jpg",
+          "webp": "images/generated/seen-pavement-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/seen-pavement-1440.jpg",
+          "webp": "images/generated/seen-pavement-1440.webp"
+        }
+      ]
+    },
+    "storyboard-slide.jpg": {
+      "width": 1440,
+      "height": 1423,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/storyboard-slide-480.jpg",
+          "webp": "images/generated/storyboard-slide-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/storyboard-slide-768.jpg",
+          "webp": "images/generated/storyboard-slide-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/storyboard-slide-1200.jpg",
+          "webp": "images/generated/storyboard-slide-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/storyboard-slide-1440.jpg",
+          "webp": "images/generated/storyboard-slide-1440.webp"
+        }
+      ]
+    },
+    "wob-book-on-paper.jpg": {
+      "width": 1440,
+      "height": 1800,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/wob-book-on-paper-480.jpg",
+          "webp": "images/generated/wob-book-on-paper-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/wob-book-on-paper-768.jpg",
+          "webp": "images/generated/wob-book-on-paper-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/wob-book-on-paper-1200.jpg",
+          "webp": "images/generated/wob-book-on-paper-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/wob-book-on-paper-1440.jpg",
+          "webp": "images/generated/wob-book-on-paper-1440.webp"
+        }
+      ]
+    },
+    "wob-card.jpg": {
+      "width": 1440,
+      "height": 1040,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/wob-card-480.jpg",
+          "webp": "images/generated/wob-card-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/wob-card-768.jpg",
+          "webp": "images/generated/wob-card-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/wob-card-1200.jpg",
+          "webp": "images/generated/wob-card-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/wob-card-1440.jpg",
+          "webp": "images/generated/wob-card-1440.webp"
+        }
+      ]
+    },
+    "wob-hung-print.jpg": {
+      "width": 1440,
+      "height": 1800,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/wob-hung-print-480.jpg",
+          "webp": "images/generated/wob-hung-print-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/wob-hung-print-768.jpg",
+          "webp": "images/generated/wob-hung-print-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/wob-hung-print-1200.jpg",
+          "webp": "images/generated/wob-hung-print-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/wob-hung-print-1440.jpg",
+          "webp": "images/generated/wob-hung-print-1440.webp"
+        }
+      ]
+    },
+    "wob-lead-installation.jpg": {
+      "width": 1440,
+      "height": 1800,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/wob-lead-installation-480.jpg",
+          "webp": "images/generated/wob-lead-installation-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/wob-lead-installation-768.jpg",
+          "webp": "images/generated/wob-lead-installation-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/wob-lead-installation-1200.jpg",
+          "webp": "images/generated/wob-lead-installation-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/wob-lead-installation-1440.jpg",
+          "webp": "images/generated/wob-lead-installation-1440.webp"
+        }
+      ]
+    },
+    "wob-print-edge.jpg": {
+      "width": 1440,
+      "height": 1921,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/wob-print-edge-480.jpg",
+          "webp": "images/generated/wob-print-edge-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/wob-print-edge-768.jpg",
+          "webp": "images/generated/wob-print-edge-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/wob-print-edge-1200.jpg",
+          "webp": "images/generated/wob-print-edge-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/wob-print-edge-1440.jpg",
+          "webp": "images/generated/wob-print-edge-1440.webp"
+        }
+      ]
+    },
+    "wob-print-shadow.jpg": {
+      "width": 1440,
+      "height": 1800,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/wob-print-shadow-480.jpg",
+          "webp": "images/generated/wob-print-shadow-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/wob-print-shadow-768.jpg",
+          "webp": "images/generated/wob-print-shadow-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/wob-print-shadow-1200.jpg",
+          "webp": "images/generated/wob-print-shadow-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/wob-print-shadow-1440.jpg",
+          "webp": "images/generated/wob-print-shadow-1440.webp"
+        }
+      ]
+    },
+    "wob-print-warm-light.jpg": {
+      "width": 1440,
+      "height": 1916,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/wob-print-warm-light-480.jpg",
+          "webp": "images/generated/wob-print-warm-light-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/wob-print-warm-light-768.jpg",
+          "webp": "images/generated/wob-print-warm-light-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/wob-print-warm-light-1200.jpg",
+          "webp": "images/generated/wob-print-warm-light-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/wob-print-warm-light-1440.jpg",
+          "webp": "images/generated/wob-print-warm-light-1440.webp"
+        }
+      ]
+    },
+    "woodland.jpg": {
+      "width": 1440,
+      "height": 1800,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/woodland-480.jpg",
+          "webp": "images/generated/woodland-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/woodland-768.jpg",
+          "webp": "images/generated/woodland-768.webp"
+        },
+        {
+          "width": 1200,
+          "jpeg": "images/generated/woodland-1200.jpg",
+          "webp": "images/generated/woodland-1200.webp"
+        },
+        {
+          "width": 1440,
+          "jpeg": "images/generated/woodland-1440.jpg",
+          "webp": "images/generated/woodland-1440.webp"
+        }
+      ]
+    },
+    "workshop-paper-sheets-flowers.jpg": {
+      "width": 776,
+      "height": 809,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/workshop-paper-sheets-flowers-480.jpg",
+          "webp": "images/generated/workshop-paper-sheets-flowers-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/workshop-paper-sheets-flowers-768.jpg",
+          "webp": "images/generated/workshop-paper-sheets-flowers-768.webp"
+        },
+        {
+          "width": 776,
+          "jpeg": "images/generated/workshop-paper-sheets-flowers-776.jpg",
+          "webp": "images/generated/workshop-paper-sheets-flowers-776.webp"
+        }
+      ]
+    },
+    "workshop-paper-sheets-leaf.jpg": {
+      "width": 808,
+      "height": 808,
+      "variants": [
+        {
+          "width": 480,
+          "jpeg": "images/generated/workshop-paper-sheets-leaf-480.jpg",
+          "webp": "images/generated/workshop-paper-sheets-leaf-480.webp"
+        },
+        {
+          "width": 768,
+          "jpeg": "images/generated/workshop-paper-sheets-leaf-768.jpg",
+          "webp": "images/generated/workshop-paper-sheets-leaf-768.webp"
+        },
+        {
+          "width": 808,
+          "jpeg": "images/generated/workshop-paper-sheets-leaf-808.jpg",
+          "webp": "images/generated/workshop-paper-sheets-leaf-808.webp"
+        }
+      ]
+    }
+  }
+}
