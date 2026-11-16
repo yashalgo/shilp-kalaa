@@ -12,7 +12,10 @@
 (function () {
   'use strict';
   var SK = window.SK || { series: [], works: [] };
-  var reducedMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* the reduced-motion preference is followed live: it can change while the page is open (or while it sits
+     in the back/forward cache); syncMotion() below brings every effect into line when it does */
+  var motionQuery = window.matchMedia ? matchMedia('(prefers-reduced-motion: reduce)') : null;
+  var reducedMotion = !!(motionQuery && motionQuery.matches);
   var $ = function (sel, root) { return (root || document).querySelector(sel); };
   var $$ = function (sel, root) { return [].slice.call((root || document).querySelectorAll(sel)); };
   var clamp = function (v, lo, hi) { return Math.max(lo, Math.min(hi, v)); };
@@ -307,6 +310,7 @@
       says = $$('.zh-say', h), plate = $('.zh-plate', h), photo = $('.zh-photo', h), paper = $('.zh-paper', h), hint = $('.zh-hint', h),
       soft = [$('.zh-labels', h), $('.zh-cap', h), hint, line].filter(Boolean),
       bar = SK.heroSizeConfirmed ? $('.scalebar', h) : null, mm = +h.dataset.mm || 210;
+    var plateLink = plate && $('a', plate);
     if (SK.heroSizeConfirmed) h.setAttribute('data-size-confirmed', '');
     var ease = function (t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
     var userX = 50, nudge = 0, shown = userX, phaseOne = 0, drag = null, touched = false, ticking = false;
@@ -314,7 +318,7 @@
     /* the handle: a real slider */
     var handle = document.createElement('span');
     handle.className = 'zh-handle'; handle.tabIndex = 0; handle.setAttribute('role', 'slider');
-    handle.setAttribute('aria-label', 'Move between the photograph and the drawing');
+    handle.setAttribute('aria-label', 'Move between the photograph and the drawing. Use the arrow keys.');
     handle.setAttribute('aria-valuemin', '0'); handle.setAttribute('aria-valuemax', '100');
     if (hint) { hint.id = hint.id || 'zh-hint'; handle.setAttribute('aria-describedby', hint.id); }
     line.removeAttribute('aria-hidden'); line.appendChild(handle);
@@ -351,7 +355,7 @@
       ticking = false;
       /* read … */
       var vh = window.innerHeight, vw = document.documentElement.clientWidth, r = h.getBoundingClientRect(),
-        sr = stage.getBoundingClientRect(), iw = ink.offsetWidth, ih = ink.offsetHeight,
+        sr = stage.getBoundingClientRect(), iw = ink.offsetWidth, ih = ink.offsetHeight, hb = hint ? hint.getBoundingClientRect().bottom : vh, gt = go ? go.getBoundingClientRect().top : vh,
         p = reducedMotion ? 0 : clamp(-r.top / Math.max(1, r.height - vh), 0, 1);
       var a = clamp(p / HERO_PHASE, 0, 1), b = clamp((p - HERO_PHASE) / (1 - HERO_PHASE), 0, 1), ea = ease(a);
       phaseOne = a;
@@ -360,24 +364,46 @@
       stage.style.setProperty('--x', shown + '%');
       handle.setAttribute('aria-valuenow', String(Math.round(shown)));
       handle.setAttribute('aria-valuetext', Math.round(100 - shown) + '% drawing');
-      if (reducedMotion) return;
-      var fade = Math.max(0, 1 - a * 1.6);
+      if (reducedMotion) { still(); return; }
+      var fade = Math.max(0, 1 - a * 1.6), u = ease(clamp((a - .6) / .4, 0, 1));   /* u: the end of phase one, where the drawing is freed */
       soft.forEach(function (n) { n.style.opacity = fade; });
-      if (photo) photo.style.opacity = Math.max(0, 1 - a * 1.2);
+      stage.style.setProperty('--fade', fade);
+      if (photo) photo.style.opacity = Math.max(0, 1 - a * 2);
       if (paper) paper.style.opacity = b > 0 ? 0 : 1;
       line.style.visibility = fade > 0 ? '' : 'hidden';
       if (open) open.style.opacity = Math.max(0, 1 - a * 1.3);
-      if (go) go.style.opacity = clamp((a - .6) / .3, 0, 1) * Math.max(0, 1 - b * 10);
+      /* "Scroll to go in": at rest too, faintly, where there is room under the hint; it fades as scrolling starts */
+      /* at rest only where it clears the hint by 16px; the caption and hint sit above the hint's bottom edge */
+      if (go) go.style.opacity = (a < .02 && gt - hb >= 16) ? .6 : clamp((a - .6) / .3, 0, 1) * Math.max(0, 1 - b * 10);
       /* phase two: grow from the split size to the old end size, moving the zoom point to the centre */
-      var endScale = Math.max(1.01, HERO_END_SCALE * Math.min(vh, vw) * .74 / Math.max(1, iw)),
-        s = Math.pow(endScale, b), k = 1 - ease(clamp(b / .12, 0, 1)), m = ease(clamp(b / .35, 0, 1)),
+      /* the whole sheet is wider than the square: on narrow screens it is eased down to fit, and centred sideways, before the zoom */
+      var fit = Math.min(1, (vw - 16) / Math.max(1, iw)), s0 = 1 + (fit - 1) * u,
+        endScale = Math.max(1.01, HERO_END_SCALE * Math.min(vh, vw) * .74 / Math.max(1, iw)),
+        s = s0 * Math.pow(endScale / s0, b), k = 1 - u, m = ease(clamp(b / .35, 0, 1)),
         ox = sr.left + (-.23788 + .46 * 1.31747) * sr.width, oy = sr.top - .17567 * sr.width + .5 * ih,
-        tx = (vw / 2 - ox) * m, ty = (vh / 2 - oy) * m;
+        tx = (vw / 2 - ox) * Math.max(u, m), ty = (vh / 2 - oy) * m;
+      if (b > 0 && !ink.dataset.sharp) {                                     /* zooming: fetch the largest file (the WebP source too) */
+        ink.dataset.sharp = '1';
+        var big = Math.round(iw * endScale) + 'px', source = ink.parentNode && ink.parentNode.tagName === 'PICTURE' && ink.parentNode.querySelector('source');
+        if (source) source.sizes = big;
+        ink.sizes = big;
+      }
       ink.style.transform = 'translate(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px) scale(' + s.toFixed(4) + ')';
       ink.style.clipPath = 'inset(' + (13.333 * k).toFixed(3) + '% ' + (6.042 * k).toFixed(3) + '% ' + (10.833 * k).toFixed(3) + '% ' + ((18.056 + shown * .75903) * k).toFixed(3) + '%)';
       says.forEach(function (n) { n.style.opacity = clamp(Math.min((b - +n.dataset.from) / 0.04, (+n.dataset.to - b) / 0.04), 0, 1); });
-      if (plate) plate.style.opacity = clamp(b * 8, 0, 1) * Math.max(0, 1 - Math.max(0, b - 0.45) * 5);
+      if (plate) {
+        var po = clamp(b * 8, 0, 1) * Math.max(0, 1 - Math.max(0, b - 0.45) * 5);
+        plate.style.opacity = po;
+        if (plateLink) plateLink.tabIndex = po > .5 ? 0 : -1;      /* never a tab stop while it cannot be seen */
+      }
       if (bar) setScaleBar(bar, iw * s / mm);
+    }
+    function still() {
+      if (plateLink) plateLink.removeAttribute('tabindex');
+      [ink, photo, paper, line, open, go, plate].concat(soft, says).forEach(function (n) {
+        if (n) { n.style.opacity = ''; n.style.visibility = ''; }
+      });
+      ink.style.transform = ''; ink.style.clipPath = ''; stage.style.removeProperty('--fade');
     }
     function queue() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
     window.addEventListener('scroll', queue, { passive: true });
@@ -413,6 +439,16 @@
     blocks.forEach(function (n) { io.observe(n); });
   }
 
+  /* ---------- reduced motion changed (or the page came back from the cache): settle every effect ---------- */
+  function syncMotion() {
+    var now = !!(motionQuery && motionQuery.matches);
+    if (now === reducedMotion) return;
+    reducedMotion = now;
+    if (reducedMotion) $$('.rv').forEach(function (n) { n.classList.add('in'); });   /* no fades left pending */
+    $$('.zoom.anim').forEach(function (z) { z.classList.remove('anim'); });
+    relayout();                                                                     /* hero: still form or moving form */
+  }
+
   /* ---------- start ---------- */
   initForward();
   initLettering();
@@ -430,7 +466,8 @@
   window.addEventListener('orientationchange', relayout);
   window.addEventListener('load', relayout);
   /* coming back through the back/forward cache: sizes may have changed while away */
-  window.addEventListener('pageshow', function (e) { if (e.persisted) relayout(); });
+  window.addEventListener('pageshow', function (e) { syncMotion(); if (e.persisted) relayout(); });
+  if (motionQuery) { if (motionQuery.addEventListener) motionQuery.addEventListener('change', syncMotion); else if (motionQuery.addListener) motionQuery.addListener(syncMotion); }
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(relayout);
   relayout();
 })();

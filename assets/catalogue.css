@@ -176,7 +176,16 @@
 
 /* ───────── Drawing pages ───────── */
 .a-desc{font-size:17.5px;line-height:1.5;max-width:30em}
-@media (min-width:1001px){ .a-piece{flex:0 0 auto;grid-template-rows:minmax(0,1fr)} .a-piece>*{min-height:0} .a-data{gap:26px} }
+/* Wide screens: the page is at least one window tall; the viewer stays in view (sticky, one window high) while
+   the side column grows with its content, so on a short window nothing in it is cut off: it simply scrolls with
+   the page. At 1440×900 everything fits, and the page stays a single screen. */
+@media (min-width:1001px){
+  .a-piece{flex:0 0 auto;height:auto;min-height:100vh;grid-template-rows:auto;align-items:start}
+  .a-piece>.a-view{position:sticky;top:0;height:100vh;min-height:560px}
+  .a-data{gap:20px;overflow:visible;min-height:100vh}
+  .a-looks-side button{padding:10px 0}
+  .a-data .a-desc{font-size:17px}
+}
 .a-view .hint,.a-view .ctrl{position:static}
 .a-under{position:absolute;left:40px;right:40px;bottom:36px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:24px}
 .a-under>p{grid-column:1}
@@ -263,13 +272,9 @@
 .patch-on .zoom img{opacity:.16}
 .btn.route{text-align:center}
 
-/* drawing pages: the title above the image on phones; the hint matches the pointer */
-.a-title-m{display:none}
+/* drawing pages: the hint matches the pointer */
 .hint .hint-touch{display:none}
 @media (pointer:coarse){ .hint .hint-fine{display:none} .hint .hint-touch{display:inline} }
-@media (max-width:640px){
-  .a-title-m{display:block;font-size:22px;line-height:1.2;margin:0 0 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-}
 
 /* Write: the form is the main column; the two paths and the direct routes sit beside it on wide screens.
    Phones and tablets: heading, paths, form, then the direct routes. */
@@ -302,3 +307,45 @@
   .field figcaption a{padding-block:11px}
 }
 @media (max-width:640px){ .pj-more .line{padding-top:18px;margin-top:-8px} }
+
+/* Write page without JavaScript: the form cannot send, so it is hidden and a line points to the direct routes */
+.nojs-note{display:none}
+html:not(.js) .nojs-note{display:block;font-size:19px;line-height:1.5;margin-bottom:22px}
+html:not(.js) #enquiry,html:not(.js) .about-slot{display:none}
+
+/* Drawing pages on phones: the one title (the page's h1) moves above the viewer as "Title · Pl. nn"; the
+   panel's other blocks follow the viewer. The panel box itself steps aside (display:contents). */
+@media (max-width:640px){
+  .a-piece{display:flex;flex-direction:column}
+  .a-data{display:contents}
+  .a-data>*{margin-inline:var(--pad)}
+  .a-title{order:-1;margin-top:72px;display:flex;flex-direction:row-reverse;justify-content:flex-end;align-items:baseline;gap:.45em;flex-wrap:wrap}
+  .a-title h1{font-size:24px;line-height:1.2}
+  .a-title .lab::before{content:"· "}
+  .a-piece .a-view{padding-top:12px}
+  .a-desc{border-top:1px solid var(--rule);padding-top:26px;margin-top:26px}
+  .a-data dl{margin-top:24px}
+  .a-end{margin-top:28px;margin-bottom:40px}
+}
+
+/* Write on phones: each path is its heading; tapping it opens its description and chooses that subject */
+@media (max-width:640px){
+  .path-toggle{all:unset;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;min-height:44px;cursor:pointer;font:inherit;color:inherit}
+  .path-toggle::after{content:"+";font:300 22px/1 var(--f-label);color:var(--soft)}
+  .path-toggle[aria-expanded="true"]::after{content:"−"}
+  .path-toggle:focus-visible{outline:1px solid var(--moss);outline-offset:4px}
+  .js .path h2{margin-bottom:0}
+  .path:has(.path-toggle) p{display:none;margin-top:12px}
+  .path.open p{display:block}
+  .paths{gap:0;margin-bottom:40px}
+  .path{padding-top:10px;padding-bottom:10px}
+  .paths.has-choice .path:not(.chosen){opacity:1}
+  .send-btn{width:100%;justify-content:center}
+  .about-plate img{width:96px;height:96px}
+}
+
+/* Work: Stacked house is photographed on a grey card; lift its paper to white so multiply leaves no box */
+.pl[href$="/overgrown-house-vii.html"] img,.piece[data-piece="overgrown-house-vii"] .zoom img{filter:brightness(1.12) contrast(1.06)}
+
+/* Projects on phones: her card is eight mono lines at 16px; one size down keeps it short */
+@media (max-width:640px){ .pj-page .her--short blockquote{font-size:15px;line-height:1.7} }

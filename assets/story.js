@@ -2,7 +2,12 @@
    "One sheet, closer and closer" (Process). Progressive enhancement: every page reads fully without it. */
 (function(){
   var $=function(s,r){return(r||document).querySelector(s)},$$=function(s,r){return[].slice.call((r||document).querySelectorAll(s))};
+  /* followed live: on a change (or a return from the back/forward cache) "reduced" is updated and an
+     sk:motion event lets each effect settle */
   var mq=matchMedia('(prefers-reduced-motion: reduce)'),reduced=mq.matches;
+  function motionChanged(){if(mq.matches===reduced)return;reduced=mq.matches;dispatchEvent(new Event('sk:motion'))}
+  if(mq.addEventListener)mq.addEventListener('change',motionChanged);else if(mq.addListener)mq.addListener(motionChanged);
+  addEventListener('pageshow',motionChanged);
   function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
   function ease(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2}
 
@@ -35,7 +40,11 @@
         if(inView&&!userPaused){var p=v.play();if(p&&p.catch)p.catch(function(){})}else if(!inView&&!v.paused)v.pause();
       })},{threshold:.35}).observe(v);
     }
-    mq.addEventListener&&mq.addEventListener('change',function(e){if(e.matches){userPaused=true;v.pause()}});
+    /* the preference can change while the page is open: stop the reel on "reduce", let it play again otherwise
+       (unless the visitor paused it themselves) */
+    var pausedByPref=reduced;
+    function reelMotion(){if(reduced){if(!v.paused){v.pause();pausedByPref=true}userPaused=true}else if(pausedByPref){pausedByPref=false;userPaused=false;if(inView){var p=v.play();if(p&&p.catch)p.catch(function(){})}}}
+    addEventListener('sk:motion',reelMotion);
   }
 
   /* ---------------------------------------------------------------- process: one sheet, closer and closer
@@ -50,18 +59,21 @@
     var layers=steps.map(function(li,i){var im=$('img',li);stage.appendChild(im);return im});
     /* under the sheet on tablets and phones: the current caption, shown inside the sticky box (a copy of the list's text, so hidden from assistive tech) */
     var cap=document.createElement('p');cap.className='closer-cap';cap.setAttribute('aria-hidden','true');
+    /* on wider screens all five captions sit in a sticky column beside the sheet, the current one in full ink (a copy, hidden from assistive tech) */
+    var caps=document.createElement('ol');caps.className='closer-caps';caps.setAttribute('aria-hidden','true');
+    var capItems=steps.map(function(li){var c=document.createElement('li');c.innerHTML=$('p',li).innerHTML;caps.appendChild(c);return c});
     var btns=steps.map(function(li,i){var b=document.createElement('button');b.type='button';b.textContent=String(i+1);
       b.setAttribute('aria-label','Go to view '+(i+1)+' of '+steps.length);
       b.addEventListener('click',function(){var p=side()?$('p',li):li,r=p.getBoundingClientRect();scrollTo({top:scrollY+r.top-target()+Math.min(80,r.height*.3+4),behavior:reduced?'auto':'smooth'})});
       bar.appendChild(b);return b});
-    wrap.appendChild(stage);wrap.appendChild(cap);wrap.appendChild(bar);list.parentNode.insertBefore(wrap,list);sec.classList.add('is-live');
+    wrap.appendChild(stage);wrap.appendChild(cap);wrap.appendChild(bar);wrap.appendChild(caps);list.parentNode.insertBefore(wrap,list);sec.classList.add('is-live');
     var cam=boxes[0].slice(),op=layers.map(function(_,i){return i?0:1}),on=-1,raf=0;
     function render(){layers.forEach(function(im,i){var b=boxes[i],s=b[2]/cam[2];
       im.style.transform='translate('+((b[0]-cam[0])/cam[2]*100)+'%,'+((b[1]-cam[1])/cam[2]*100)+'%) scale('+s+')';
       im.style.opacity=i?op[i]:1})}
     function go(n){
       if(n===on)return;on=n;
-      steps.forEach(function(li,i){li.classList.toggle('is-on',i===n)});cap.innerHTML=$('p',steps[n]).innerHTML;btns.forEach(function(b,i){b.setAttribute('aria-pressed',String(i===n))});
+      steps.forEach(function(li,i){li.classList.toggle('is-on',i===n)});capItems.forEach(function(c,i){c.classList.toggle('is-on',i===n)});cap.innerHTML=$('p',steps[n]).innerHTML;btns.forEach(function(b,i){b.setAttribute('aria-pressed',String(i===n))});
       var from=cam.slice(),to=boxes[n],o0=op.slice(),D=reduced?0:1100,t0=0;
       var c0=[from[0]+from[2]/2,from[1]+from[2]/2],c1=[to[0]+to[2]/2,to[1]+to[2]/2],dist=Math.hypot(c1[0]-c0[0],c1[1]-c0[1]),lift=Math.min(.7,dist/Math.max(from[2],to[2]))*.55;
       if(raf)cancelAnimationFrame(raf);

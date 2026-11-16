@@ -215,7 +215,7 @@ const altOf = w => w.alt || w.title + ', ' + BY;
    ===================================================================================== */
 const SIZES = {
   grid: '(max-width:640px) calc(50vw - 28px), (max-width:1000px) calc(50vw - 68px), 30vw',
-  viewer: '(max-width:1000px) 100vw, calc(100vw - 480px)'
+  viewer: '(max-width:640px) calc(100vw - 32px), (max-width:1000px) calc(100vw - 80px), calc(100vw - 480px)'
 };
 function readDimensions(file) {
   const buf = fs.readFileSync(path.join(ROOT, 'images', file));
@@ -251,7 +251,14 @@ function validate() {
   const problems = [];
   const ids = new Set();
   if (!SK || !Array.isArray(SK.works) || !Array.isArray(SK.series)) throw new Error('assets/works.js must define window.SK with works and series');
-  for (const s of SK.series) if (!s.id || !s.title) problems.push('a series is missing its id or title');
+  const seriesIds = new Set();
+  for (const s of SK.series) {
+    if (!s.id || !s.title) problems.push('a series is missing its id or title');
+    if (seriesIds.has(s.id)) problems.push('series id "' + s.id + '" is used twice');
+    seriesIds.add(s.id);
+    if (s.id && !SK.works.some(w => w.series === s.id)) problems.push('series "' + s.id + '" has no works');
+  }
+  const unit = v => typeof v === 'number' && Number.isFinite(v) && v >= 0 && v <= 1;
   for (const w of SK.works) {
     const name = w.id || '(no id)';
     if (!/^[a-z0-9-]+$/.test(w.id || '')) problems.push(name + ': id must be lower-case letters, digits and hyphens');
@@ -262,7 +269,18 @@ function validate() {
     if (!seriesOf(w)) problems.push(name + ': unknown series "' + w.series + '"');
     if (!w.img || !exists('images/' + w.img)) problems.push(name + ': image images/' + w.img + ' not found');
     if (w.sizeConfirmed && (!w.size || !(w.mm > 0))) problems.push(name + ': sizeConfirmed needs both size and mm');
-    for (const look of w.looks || []) if (!(look.name && look.x >= 0 && look.x <= 1 && look.y >= 0 && look.y <= 1 && look.s >= 1)) problems.push(name + ': a close look needs name, x and y between 0 and 1, s of at least 1');
+    for (const look of w.looks || []) if (!(look.name && unit(look.x) && unit(look.y) && Number.isFinite(look.s) && look.s >= 1 && look.s <= 10)) problems.push(name + ': a close look needs a name, x and y between 0 and 1, and s between 1 and 10');
+    if (w.hires && !exists('images/' + w.hires)) problems.push(name + ': hires image images/' + w.hires + ' not found');
+    if (w.frame !== undefined) {
+      const f = w.frame;
+      if (!(Array.isArray(f) && f.length === 4 && f.every(unit) && f[0] < f[2] && f[1] < f[3])) problems.push(name + ': frame must be [left, top, right, bottom] between 0 and 1, left < right, top < bottom');
+    }
+    if (w.patch) {
+      const b = w.patch.box || [0, 0, 1, 1];
+      if (!w.patch.img || !exists('images/' + w.patch.img)) problems.push(name + ': patch image images/' + w.patch.img + ' not found');
+      if (!(Array.isArray(b) && b.length === 4 && b.every(unit) && b[2] > 0 && b[3] > 0 && b[0] + b[2] <= 1.0001 && b[1] + b[3] <= 1.0001)) problems.push(name + ': patch.box must be [left, top, width, height] inside 0–1');
+      if (!w.patch.caption) problems.push(name + ': patch needs a caption');
+    }
   }
   for (const file of Object.keys(PAGES)) if (!exists(file)) problems.push(file + ' is listed in PAGES but does not exist');
   if (problems.length) throw new Error('assets/works.js or PAGES has problems:\n  - ' + problems.join('\n  - '));
@@ -329,8 +347,8 @@ const LD = {
     {
       '@type': 'ExhibitionEvent', name: EXHIBITION.name, description: EXHIBITION.description,
       startDate: EXHIBITION.startDate, endDate: EXHIBITION.endDate,
-      /* a past event keeps EventScheduled: schema.org has no "completed" status; the past dates say it is over */
-      eventStatus: 'https://schema.org/EventScheduled', eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+      /* no eventStatus: the event is over, and its past dates say so */
+      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
       image: SITE + 'images/' + EXHIBITION.image,
       organizer: { '@type': 'Organization', name: EXHIBITION.organizer },
       superEvent: { '@type': 'Event', name: EXHIBITION.superEvent },
@@ -560,11 +578,27 @@ function rowCap(row) {
   const sum = row.reduce((t, w) => t + frameOf(w).r, 0);
   return sum < ROW_TARGET * 0.62 ? ' style="max-width:' + (100 * sum * 1.25 / ROW_TARGET).toFixed(1) + '%"' : '';
 }
-function catalogPlate(w) {
+/* The `sizes` of one plate in the Work grid, from the layout (catalogue.css): the image is drawn 1/fw as wide
+   as its tile (the frame crops the photo's margins), and a tile takes its share r/sum of its row.
+     wide (>1000)   rows = 3/4 of (100vw − 96px page padding − 4.5vw column gap) = 71.6vw − 72px, gaps 2.2vw
+     tablet         rows = 100vw − 96px, gaps about 18px
+     phone (≤640)   two columns of (100vw − 40px − 14px) / 2, asked for at most about 2× density
+                    (×0.67: a 3× phone takes the 2× file, which is the visible limit for a 170px tile) */
+const PHONE_DENSITY_CAP = 0.67;
+function plateSizes(w, row) {
+  const f = frameOf(w), sum = row.reduce((t, x) => t + frameOf(x).r, 0), n = row.length;
+  const capped = sum < ROW_TARGET * 0.62 ? sum * 1.25 / ROW_TARGET : 1;          /* same rule as rowCap() */
+  const share = f.r / sum / f.fw * capped;
+  const k = v => v.toFixed(3);
+  return '(max-width:640px) calc((50vw - 27px) * ' + k(PHONE_DENSITY_CAP / f.fw) + '), ' +
+    '(max-width:1000px) calc((100vw - ' + (96 + (n - 1) * 18) + 'px) * ' + k(share) + '), ' +
+    'calc((' + (71.6 - (n - 1) * 2.2).toFixed(1) + 'vw - 72px) * ' + k(share) + ')';
+}
+function catalogPlate(w, row) {
   const f = frameOf(w);
   const style = '--r:' + f.r.toFixed(3) + ';--fx:' + f.x0 + ';--fy:' + f.y0 + ';--fw:' + f.fw.toFixed(3) + ';--fh:' + f.fh.toFixed(3);
   return '<a class="pl" href="' + drawingFile(w) + '" style="' + style + '" aria-label="' + esc(w.title + ', ' + w.year + '. Open the drawing') + '">' +
-    '<span class="pl-img">' + picture(w.img, altOf(w), { sizes: '(max-width:640px) 50vw, (max-width:1000px) 45vw, 33vw' }) + '</span>' +
+    '<span class="pl-img">' + picture(w.img, altOf(w), { sizes: plateSizes(w, row) }) + '</span>' +
     '<span class="pl-cap"><span class="pl-t">' + esc(w.title) + '</span><span class="pl-y lab">' + w.year + '</span><span class="pl-open lab" aria-hidden="true">Open</span></span></a>';
 }
 function catalogue() {
@@ -577,7 +611,7 @@ function catalogue() {
       '<h2 class="sh" id="' + s.id + '-h">' + esc(s.title) + '</h2>' +
       '<p class="lab">' + esc(s.years.replace(/\s*–\s*/, ' – ')) + ' · ' + works.length + (works.length === 1 ? ' drawing' : ' drawings') + '</p>' +
       (s.note ? '<p class="sr-note">' + esc(s.note) + '</p>' : '') + '</header>' +
-      '<div class="rows">' + rowsOf(works).map(row => '<div class="prow"' + rowCap(row) + '>' + row.map(catalogPlate).join('') + '</div>').join('') + '</div></section>';
+      '<div class="rows">' + rowsOf(works).map(row => '<div class="prow"' + rowCap(row) + '>' + row.map(w => catalogPlate(w, row)).join('') + '</div>').join('') + '</div></section>';
   }).join('');
   return strip + series;
 }
@@ -632,11 +666,16 @@ function fillAbout(html) {
 
 /* ---------- commissions: the Write page ----------
    The form is always shown, next to the direct routes (Instagram, LinkedIn).
-   SK.formTo  where the form delivers (FormSubmit). Never written into any page: catalogue.js reads it from
-              works.js at send time. Empty → the form says it is not connected yet and sends nothing.
+   SK.formTo  where the form delivers (FormSubmit). The build never renders it into HTML, JSON-LD, llms.txt or
+              the sitemap, but it is public: anyone can read it in assets/works.js, which every page loads.
+              Replace it with a FormSubmit alias (a random token) to keep the address private.
+              Empty → the form says it is not connected yet and sends nothing.
+   Without JavaScript the form cannot send (it has no action, so the address is not in the HTML): CSS hides
+   it and shows the no-JS line in the contact region instead.
    SK.email   her public address. Only when set does a visible mailto line join the direct routes. */
 function fillContact(html) {
-  const routes = '<div class="direct-routes" data-contact="routes"><p class="lab">Or write directly</p>' +
+  const routes = '<p class="nojs-note">This form needs JavaScript to send. Please write on Instagram or LinkedIn instead.</p>' +
+    '<div class="direct-routes" data-contact="routes"><p class="lab">Or write directly</p>' +
     '<p class="route-buttons"><a class="btn route" href="' + INSTAGRAM + '" rel="me noopener">Message on Instagram, @shilp_kalaa</a><a class="btn route" href="' + LINKEDIN + '" rel="me noopener">Message on LinkedIn</a></p>' +
     (SK.email ? '<p class="write-direct">Or write straight to <a class="line" href="mailto:' + esc(SK.email) + '"><b>' + esc(SK.email) + '</b></a></p>' : '') + '</div>';
   html = setRegion(html, 'contact', region('contact', '\n      ' + routes + '\n      '));
@@ -672,7 +711,9 @@ function patchToggle(w) {
 function patchLayer(w) {
   if (!w.patch) return '';
   const b = w.patch.box || [0, 0, 1, 1];
-  return '<div class="patch" hidden data-box="' + b.join(',') + '">' + picture(w.patch.img, w.patch.alt || '', { cls: '', sizes: SIZES.viewer }) + '</div>';
+  const k = (b[2] || 1).toFixed(3);
+  const sizes = '(max-width:640px) calc(min(100vw - 32px, 64vh) * ' + (b[2] * 0.67).toFixed(3) + '), (max-width:1000px) calc(min(100vw - 80px, 72vh) * ' + k + '), calc(min(100vw - 480px, 100vh - 236px) * ' + k + ')';
+  return '<div class="patch" hidden data-box="' + b.join(',') + '">' + picture(w.patch.img, w.patch.alt || '', { cls: '', sizes }) + '</div>';
 }
 
 function drawingMain(w, i) {
@@ -684,7 +725,6 @@ function drawingMain(w, i) {
   const zoomAttrs = ' data-looks="' + esc(JSON.stringify(w.looks || [])) + '"' + (sized ? ' data-mm="' + w.mm + '"' : '') + (w.hires ? ' data-hires="images/' + esc(w.hires) + '"' : '');
   return '<main id="main" class="a-piece piece" data-piece="' + w.id + '">' +
     '<div class="a-view" style="--ar:' + (imageInfo(w.img).width / imageInfo(w.img).height).toFixed(3) + '">' +
-      '<p class="a-title-m t" aria-hidden="true">' + esc(w.title) + '</p>' +
       '<div class="zoom" tabindex="0" role="img" aria-label="' + esc(altOf(w)) + ' Zoomable." aria-describedby="zoom-hint"' + zoomAttrs + '>' +
         picture(w.img, altOf(w), { sizes: SIZES.viewer, priority: true }) + '</div>' +
       patchLayer(w) +
@@ -698,7 +738,7 @@ function drawingMain(w, i) {
     '</div>' +
     looksList(w, 'under') +
     '<aside class="a-data">' +
-      '<div><p class="lab">Pl. ' + pad(i + 1) + '</p><h1 class="t">' + esc(w.title) + '</h1></div>' +
+      '<div class="a-title"><p class="lab">Pl. ' + pad(i + 1) + '</p><h1 class="t">' + esc(w.title) + '</h1></div>' +
       (w.desc ? '<p class="a-desc">' + esc(w.desc) + '</p>' : '') +
       '<dl><dt class="lab">Artist</dt><dd><a href="about.html">' + ARTIST + '</a></dd>' +
       '<dt class="lab">Series</dt><dd><a href="work.html#' + w.series + '">' + esc(s.title) + '</a></dd>' +
@@ -721,7 +761,7 @@ function wholePage(file, p, headBlock, main, { base = false } = {}) {
 function drawingPage(w, i) {
   const file = drawingFile(w);
   const s = seriesOf(w);
-  const p = { title: drawingTitle(w), desc: drawingDesc(w, s), ...CATALOGUE };
+  const p = { title: drawingTitle(w), desc: drawingDesc(w, s), footer: 'short', ...CATALOGUE };
   const head = headRegion(file, p, { ld: LD.drawing(file, p, w), image: w.img, imageAlt: altOf(w), ogType: 'article' });
   return wholePage(file, p, head, drawingMain(w, i), { base: true });
 }

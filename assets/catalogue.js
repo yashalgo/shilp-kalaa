@@ -112,11 +112,14 @@
     var kind = params.get('kind') || (work ? 'existing' : '');
     if (!PLACEHOLDER[kind]) kind = work ? 'existing' : '';
 
-    /* the path this visitor came for comes forward */
-    var chosen = false;
-    $$('.path').forEach(function (p) { var on = !!kind && p.dataset.kinds.split(' ').indexOf(kind) >= 0; p.classList.toggle('chosen', on); chosen = chosen || on; });
-    var paths = $('.paths');
-    if (paths) paths.classList.toggle('has-choice', chosen);
+    /* the path that matches what the visitor is writing about comes forward ('' = none) */
+    function choosePath(k) {
+      var chosen = false;
+      $$('.path').forEach(function (p) { var on = !!k && p.dataset.kinds.split(' ').indexOf(k) >= 0; p.classList.toggle('chosen', on); chosen = chosen || on; });
+      var paths = $('.paths');
+      if (paths) paths.classList.toggle('has-choice', chosen);
+    }
+    choosePath(kind);
 
     var form = $('#enquiry');
     if (!form) return;
@@ -131,11 +134,48 @@
       if (slot) slot.innerHTML = w ? '<a class="about-plate" href="drawings/' + esc(w.id) + '.html"><img src="' + thumb(w) + '" alt="" width="96" height="96">' +
         '<span>You are asking about <em>' + esc(w.title) + '</em>, ' + w.year + '.</span></a>' : '';
     }
+    /* one place that brings the page in line with the form: path, drawing line, placeholder.
+       pathKind: the kind whose path to bring forward ('' after a reset, so nothing stays highlighted) */
+    function sync(pathKind) {
+      choosePath(pathKind);
+      showWhich();
+    }
     if (kind) el.kind.value = kind;
     if (work) el.about.value = work.id;
-    el.kind.addEventListener('change', showWhich);
+    el.kind.addEventListener('change', function () { sync(el.kind.value); });
+
+    /* phones only: each path is its heading, a button that opens its description and chooses that subject
+       in the form. Wider screens show the paths in full, with plain headings (the buttons are removed). */
+    var phone = window.matchMedia ? matchMedia('(max-width: 640px)') : null;
+    function pathToggles(on) {
+      $$('.path').forEach(function (path, n) {
+        var h = $('h2', path), text = $('p', path), b = $('.path-toggle', path);
+        if (!h || !text) return;
+        if (!on) {
+          if (b) { while (b.firstChild) h.insertBefore(b.firstChild, b); b.remove(); }
+          path.classList.remove('open');
+          return;
+        }
+        if (b) return;
+        text.id = text.id || 'path-text-' + (n + 1);
+        b = document.createElement('button');
+        b.type = 'button'; b.className = 'path-toggle';
+        while (h.firstChild) b.appendChild(h.firstChild);
+        h.appendChild(b);
+        b.setAttribute('aria-controls', text.id);
+        var open = !!kind && path.dataset.kinds.split(' ').indexOf(kind) >= 0;
+        path.classList.toggle('open', open); b.setAttribute('aria-expanded', String(open));
+        b.addEventListener('click', function () {
+          var nowOpen = !path.classList.contains('open');
+          path.classList.toggle('open', nowOpen); b.setAttribute('aria-expanded', String(nowOpen));
+          if (nowOpen) { el.kind.value = path.dataset.kinds.split(' ')[0]; sync(el.kind.value); }
+        });
+      });
+    }
+    pathToggles(!!(phone && phone.matches));
+    if (phone) { var onPhone = function () { pathToggles(phone.matches); }; if (phone.addEventListener) phone.addEventListener('change', onPhone); else if (phone.addListener) phone.addListener(onPhone); }
     el.about.addEventListener('change', showWhich);
-    showWhich();
+    sync(kind);
 
     function fieldError(input, text) {
       var out = document.getElementById(input.getAttribute('aria-describedby'));
@@ -176,7 +216,7 @@
           _subject: 'Shilp Kalaa: ' + kindText,
           name: el.name.value, email: el.email.value, kind: kindText,
           drawing: w ? w.title + ', ' + w.year + ' (' + w.id + ')' : '', message: el.message.value,
-          _honey: ''
+          _honey: el._honey.value
         })
       }).then(function (r) {
         if (!r.ok) throw new Error(r.status);
@@ -184,7 +224,7 @@
       }).then(function (data) {
         /* success only when FormSubmit says so (an unactivated form answers success: "false") */
         if (!data || !(data.success === true || data.success === 'true')) throw new Error('not confirmed');
-        form.reset(); showWhich();
+        form.reset(); sync('');
         note.textContent = 'Thank you. Your message is on its way, and she will write back.';
       }).catch(function () {
         /* keep what was typed; point to the direct routes (her address is shown only when SK.email is set) */
