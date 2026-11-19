@@ -79,7 +79,7 @@ const FACTS = [
   ['Works in', 'India and London, United Kingdom'],
   ['Shown', 'KaalChakra by OSA studio, London Design Festival 2025, Asylum Chapel, London, 14–15 September 2025'],
   ['Elsewhere', '<a href="' + INSTAGRAM + '" rel="me noopener">Instagram @shilp_kalaa</a> · <a href="' + LINKEDIN + '" rel="me noopener">LinkedIn</a>'],
-  ['Enquiries', '<a href="commissions.html">Write to Shubhangi</a>']
+  ['Enquiries', '<a href="commissions.html">Write to Shubhangi</a>' + (SK.email ? ' · <a href="mailto:' + SK.email + '">' + SK.email + '</a>' : '')]
 ];
 
 /* Questions on about.html (in a closed <details>), in the FAQPage structured data and in llms.txt. Plain text. */
@@ -89,7 +89,7 @@ const FAQ = [
   ['What does she draw?', 'Moss and the small wild plants that grow in pavements and on walls, drawn in pen and ink from close observation and from her own photographs. Earlier work includes dense forest landscapes (2021–2022), gardens seen from above (2023) and overgrown houses (2019–2020).'],
   ['How did the moss work begin?', 'In her own account, it began with choosing a site: she looked around her surroundings and was drawn to “the wild patches of plant species, found in nobody\'s land”. A podcast, Democracy of species, introduced her to the botanist Robin Wall Kimmerer, and she read Kimmerer\'s book Gathering Moss.'],
   ['Where has her work been shown?', 'Whispers on Bricks was shown in KaalChakra, a group exhibition by OSA studio for London Design Festival 2025, at the Asylum Chapel in London on 14 and 15 September 2025. In 2024 she showed drawings in floor installations, one of them labelled Encounter moss / From the soil.'],
-  ['Does she take commissions?', 'She welcomes enquiries about commissioned drawings, exhibitions and collaborations. Write to her through the Write page of this site or on Instagram at @shilp_kalaa.']
+  ['Does she take commissions?', 'She welcomes enquiries about commissioned drawings, exhibitions and collaborations. Write to her through the Write page of this site' + (SK.email ? ', by email at ' + SK.email + ',' : '') + ' or on Instagram at @shilp_kalaa.']
 ];
 
 /* Structured-data descriptions of the exhibition, the box set and the commission service. */
@@ -297,6 +297,7 @@ const PERSON = {
   workLocation: [{ '@type': 'Country', name: 'India' }, { '@type': 'City', name: 'London', containedInPlace: { '@type': 'Country', name: 'United Kingdom' } }],
   knowsAbout: ['Nature art', 'Fine art', 'Pen and ink drawing', 'Moss', 'Urban nature', 'Handmade paper', 'Installation art'],
   sameAs: [INSTAGRAM, LINKEDIN],
+  ...(SK.email ? { email: 'mailto:' + SK.email } : {}),
   performerIn: {
     '@type': 'ExhibitionEvent', name: 'KaalChakra',
     description: 'A group exhibition by OSA studio, part of London Design Festival 2025, at Asylum Chapel, London, 14–15 September 2025, showing Whispers on Bricks by Shubhangi Saxena.',
@@ -788,7 +789,7 @@ function robots() {
     AI_AND_SEARCH_BOTS.map(b => 'User-agent: ' + b + '\nAllow: /\n').join('\n') + '\nSitemap: ' + SITE + 'sitemap.xml\n';
 }
 function llms() {
-  const plain = v => v.replace(/<a href="([^"]*)"[^>]*>([^<]*)<\/a>/g, (m, href, text) => text + ' (' + (/^http/.test(href) ? href : SITE + href) + ')');
+  const plain = v => v.replace(/<a href="([^"]*)"[^>]*>([^<]*)<\/a>/g, (m, href, text) => /^mailto:/.test(href) ? text : text + ' (' + (/^http/.test(href) ? href : SITE + href) + ')');
   return '# ' + STUDIO + ' · ' + ARTIST + '\n\n> ' + SUMMARY + '\n\n' + LLMS_INTRO + '\n\n' +
     '## Facts\n\n' + FACTS.map(([k, v]) => '- ' + k + ': ' + plain(v)).join('\n') + '\n\n' +
     '## Questions\n\n' + FAQ.map(([q, a]) => '### ' + q + '\n' + a).join('\n\n') + '\n\n' +

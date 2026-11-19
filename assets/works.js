@@ -15,8 +15,8 @@
              drawing, the area the photograph covers once registered onto it */
 window.SK = {
   site: 'https://shilpkalaa.com/',   // public address; tools/build.js writes it into every page
-  email: '',            // her PUBLIC address: only this is ever shown (mailto line, structured data). Empty until she gives one
-  formTo: 'hi.yashgupta@gmail.com',   // where the Write form delivers (FormSubmit address or alias). NEVER shown on the site; empty = form not connected
+  email: 'studio@shilpkalaa.com',            // her PUBLIC address: only this is ever shown (mailto line, structured data). Empty until she gives one
+  formTo: 'studio@shilpkalaa.com',   // where the Write form delivers (FormSubmit address or alias). NEVER shown on the site; empty = form not connected
   heroSizeConfirmed: false,
   lettering: 'serif',   // serif | type | sharp | pen | cursive
   series: [
